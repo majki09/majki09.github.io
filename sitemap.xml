@@ -13,16 +13,6 @@
   </url>
   
   <url>
-    <loc>https://majki09.github.io/posts/gci/</loc>
-    <lastmod>2018-01-13T10:29:23+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://majki09.github.io/posts/creating-a-new-theme/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://majki09.github.io/404/</loc>
   </url>
   
@@ -55,12 +45,6 @@
   </url>
   
   <url>
-    <loc>https://majki09.github.io/categories/blogging/</loc>
-    <lastmod>2018-01-13T10:29:23+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://majki09.github.io/categories/</loc>
     <lastmod>2019-05-05T21:20:32+02:00</lastmod>
     <priority>0</priority>
@@ -75,18 +59,6 @@
   <url>
     <loc>https://majki09.github.io/categories/domoticz/</loc>
     <lastmod>2019-03-07T10:29:23+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://majki09.github.io/tags/google-code-in/</loc>
-    <lastmod>2018-01-13T10:29:23+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://majki09.github.io/tags/openwisp/</loc>
-    <lastmod>2018-01-13T10:29:23+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -117,12 +89,6 @@
   <url>
     <loc>https://majki09.github.io/tags/</loc>
     <lastmod>2019-05-05T21:20:32+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://majki09.github.io/categories/tutorials/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
