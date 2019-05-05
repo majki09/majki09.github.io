@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<title>
+	Pilot RC5
+</title>
+		<style>
+	body {
+		display: block;
+		--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		
+	}
+
+	body, body.pushable {
+		background-repeat: no-repeat;
+	  	background-attachment: fixed;
+	  	background-size: cover !important;
+	}
+</style>
+
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+	
+	
+	
+	<meta name="author" content="majki" />
+	<meta name="description" content="Implementacja obsługi pilota IR w Raspberry Pi" />
+
+
+
+<meta name="generator" content="Hugo 0.54.0" />
+
+
+<link rel="shortcut icon" href="/img/defaultFav.ico">
+
+
+
+
+		
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script
+	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+
+ <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Inconsolata" rel="stylesheet"> 
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/site.css">
+
+
+
+
+
+
+	
+		<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/UtkarshVerma/hugo-dream-plus/ae11561d/exampleSite/static/css/highlight.css">
+	
+
+
+
+<style>
+	body.pushable {
+		display: block;
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		 ;
+	}
+</style>
+
+
+
+<script>
+	var colorBG =  true 
+	
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+
+	</head>
+
+	<body>
+		<script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+
+
+
+
+
+
+	var gradients = [
+	  [],
+	  ['#40e0d0', '#ff8c00', '#ff0080'], 
+	  ['#3e5151', '#decba4'], 
+	  ['#11998e', '#38ef7d'], 
+	  ['#108dc7', '#ef8e38'], 
+	  ['#fc5c7d', '#6a82fb'], 
+	  ['#fc466b', '#3f5efb'], 
+	  ['#c94b4b', '#4b134f'], 
+	  ['#23074d', '#cc5333'] 
+	];
+	document.body.style.setProperty('--colorBG', connect(gradients[getRandomInt(0, gradients.length)]));
+
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  var random;
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min;
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random;
+	      break;
+	    }
+	  }
+	  return random;
+	}
+
+	function connect(arr) {
+	  var str = '';
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', ';
+	    } else {
+	      str += arr[i];
+	    }
+	  }
+	  return str;
+	}
+</script>
+
+
+
+
+		<div id="sidebar" class="ui sidebar inverted vertical menu">
+	
+	<section id="author" class="ui top attached center aligned inverted segment">
+		
+<div class="ui small circular image">
+	
+		<img src="https://raw.githubusercontent.com/UtkarshVerma/utkarshverma.github.io/source/static/images/avatar.jpg">
+	
+</div>
+
+
+<h3 class="ui header">
+	majki
+	<div class="sub header">A keen maker, programmer and an Instructables author.</div>
+</h3>
+
+	</section>
+
+	
+	
+		<section class="ui attached center aligned inverted segment sidebar-dream-tags">
+			
+			
+			
+			
+
+
+
+
+	
+	
+		
+			
+			<a class="ui label green " href="/tags/domoticz" title="domoticz">domoticz</a>
+		
+			
+			<a class="ui label brown " href="/tags/google-code-in" title="google-code-in">google-code-in</a>
+		
+			
+			<a class="ui label red " href="/tags/openwisp" title="openwisp">openwisp</a>
+		
+			
+			<a class="ui label violet " href="/tags/pilot" title="pilot">pilot</a>
+		
+			
+			<a class="ui label pink " href="/tags/raspberry" title="raspberry">raspberry</a>
+		
+	
+
+
+		</section>
+	
+
+	
+	
+		<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+			<div class="ui inverted accordion">
+				
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/blogging">blogging</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://dream-plus-posts.netlify.com/posts/gci/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Google Code-in with OpenWISP</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/domoticz">domoticz</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://dream-plus-posts.netlify.com/posts/rc5/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Pilot RC5</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/tutorials">tutorials</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://dream-plus-posts.netlify.com/posts/creating-a-new-theme/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Creating a New Theme</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+			</div>
+		</section>
+	
+
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+		
+
+	<p>© 2019 malinkowo</p>
+
+
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
+
+	</section>
+</div>
+
+
+		<div class="pusher">
+			<div class="flipper">
+				<div class="front">
+					
+	<nav class="ui top secondary menu bar">
+	
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="About Me"></i>
+	</div>
+
+	
+	
+		<div class="item">
+			<a href="/">
+				<i class="inverted big link home icon" title="Home"></i>
+			</a>
+		</div>
+	
+
+	
+	
+
+	
+	
+		<div class="item">
+			<a href="/tags">
+				<i class="inverted big link tags icon" title="All Tags"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		<div class="item">
+			<a href="/categories">
+				<i class="inverted big link cubes icon" title="All Categories"></i>
+			</a>
+    	</div>
+	
+
+	
+	
+
+	
+	
+		<div class="ui container tablet computer only grid">
+			<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+				<i class="inverted big link sidebar icon" title="Show Sidebar"></i>
+			</div>
+		</div>
+	
+
+	
+	
+		<div class="item right">
+			<a href="/posts/index.xml">
+				<i class="inverted big link rss icon" title="RSS Feed"></i>
+			</a>
+		</div>
+	
+</nav>
+
+
+	<div class="ui centered grid">
+		
+		<div class="sixteen wide mobile only column">
+				<div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">		
+		
+		<header id="author" class="ui top attached center aligned inverted segment">
+			
+<div class="ui small circular image">
+	
+		<img src="https://raw.githubusercontent.com/UtkarshVerma/utkarshverma.github.io/source/static/images/avatar.jpg">
+	
+</div>
+
+
+<h3 class="ui header">
+	majki
+	<div class="sub header">A keen maker, programmer and an Instructables author.</div>
+</h3>
+
+		</header>
+
+		
+		<div class=" title header-title">
+			
+				<div id="tag-category-pop" class="ui red right corner label">
+					<i class="hand point icon down" title="Show/hide tags and categories"></i>
+				</div>
+			
+		</div>
+		
+		
+		<div id="tag-category" class=" content">
+			
+				<section class="ui attached center aligned inverted segment dream-tags none flexbox">
+					
+					
+					
+
+
+
+
+	
+	
+		
+			
+			<a class="ui label green " href="/tags/domoticz" title="domoticz">domoticz</a>
+		
+			
+			<a class="ui label red " href="/tags/google-code-in" title="google-code-in">google-code-in</a>
+		
+			
+			<a class="ui label olive " href="/tags/openwisp" title="openwisp">openwisp</a>
+		
+			
+			<a class="ui label red " href="/tags/pilot" title="pilot">pilot</a>
+		
+			
+			<a class="ui label violet " href="/tags/raspberry" title="raspberry">raspberry</a>
+		
+	
+
+
+				</section>
+			
+
+			
+				<section class="ui attached inverted segment dream-categories both flexbox">
+					<div class="inverted accordion">
+						
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/blogging">blogging</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://dream-plus-posts.netlify.com/posts/gci/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Google Code-in with OpenWISP</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/domoticz">domoticz</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://dream-plus-posts.netlify.com/posts/rc5/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Pilot RC5</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/tutorials">tutorials</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://dream-plus-posts.netlify.com/posts/creating-a-new-theme/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Creating a New Theme</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+					</div>
+				</section>
+			
+		</div>
+
+		
+		<footer class="ui bottom attached center aligned inverted segment">
+			
+
+	<p>© 2019 malinkowo</p>
+
+
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
+
+		</footer>
+	</div>
+</div>
+
+		</div>
+
+		<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+			
+			<section class="ui secondary top attached black segment post-head">
+				<h1 class="post-title">
+					Pilot RC5
+				</h1>
+
+				<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>Mar 7, 2019</span></div>
+					
+					<div><span class="disqusComment"><i class="comment outline icon"></i><a href="https://dream-plus-posts.netlify.com/posts/rc5/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="deb7a3974b1ba8b752f9687be8f74134"></a></span></div>
+					<div><span><i class="clock outline icon"></i>5 min read</span></div>
+					<div><span><i class="angle double up icon"></i>Last updated on Mar 7, 2019</span></div>
+				</div>
+				<hr>
+
+				
+					<div class="toc">
+						<nav id="TableOfContents">
+<ul>
+<li><a href="#wstępne-bla-bla-bla">Wstępne bla bla bla&hellip;</a></li>
+<li><a href="#lista-potrzebnych-rzeczy">Lista potrzebnych rzeczy</a></li>
+<li><a href="#instalacja">Instalacja</a>
+<ul>
+<li><a href="#hardware">Hardware</a>
+<ul>
+<li><a href="#przykładowy-odbiornik-at138b">Przykładowy odbiornik - <strong>AT138B</strong></a></li>
+</ul></li>
+<li><a href="#software">Software</a></li>
+</ul></li>
+<li><a href="#konfiguracja">Konfiguracja</a></li>
+<li><a href="#testy">Testy</a></li>
+<li><a href="#bonus">BONUS</a>
+<ul>
+<li><a href="#modyfikacja-pliku-lircrc">Modyfikacja pliku <em>lircrc</em></a></li>
+<li><a href="#step-3-change-the-docs-site">Step 3. Change the docs site</a></li>
+</ul></li>
+</ul>
+</nav>
+					</div>
+				
+
+				<article class="post-content twemoji">
+					
+
+<h1 id="wstępne-bla-bla-bla">Wstępne bla bla bla&hellip;&nbsp;<a class="anchor" href="#wstępne-bla-bla-bla"><i class="small linkify icon"></i></a> </h1>
+
+<p><strong>Piloty na podczerwień</strong> powstały już bardzo dawno temu. Niektórzy pamiętają te wynalazki jako coś, czym się włącza TV, wieżę, czy klimę. Ja pamiętam czasy, kiedy biegałem do telewizyjnego pudła, żeby zmienić kanał (były aż 3) albo podgłosić czy ściszyć, no bo pilotów my jeszcze wtedy nie mieli. Takie czasy byli&hellip; A dzisiaj? Pykniemy sobie sterowanie maliną takim właśnie wiekowym wynalazkiem. Zapraszam :)</p>
+
+<blockquote>
+<p>Zanim ruszymy dalej upewnijmy się, że:</p>
+
+<ul>
+<li>znasz podstawy elektroniki,</li>
+<li>wiesz, co to jest GPIO,</li>
+<li>znasz podstawowe komendy Linux&rsquo;a i umiesz edytować pliki,</li>
+<li>masz sprawne baterie w pilocie :).</li>
+</ul>
+</blockquote>
+
+<h1 id="lista-potrzebnych-rzeczy">Lista potrzebnych rzeczy&nbsp;<a class="anchor" href="#lista-potrzebnych-rzeczy"><i class="small linkify icon"></i></a> </h1>
+
+<ul>
+<li>RaspberryPi z <strong>Raspbianem</strong>,</li>
+<li>odbiornik IR, np <strong>AT138B</strong>, <strong>TSOP32236</strong> lub podobne,</li>
+<li>kondensator elektrolityczny <strong>47uF</strong> (najlepiej w obudowie do montażu przewlekanego),</li>
+<li>dowolny pilot zgodny z <strong>RC-5</strong> (u mnie to poczciwy pilot Cyfry+).</li>
+</ul>
+
+<h1 id="instalacja">Instalacja&nbsp;<a class="anchor" href="#instalacja"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="hardware">Hardware&nbsp;<a class="anchor" href="#hardware"><i class="small linkify icon"></i></a> </h2>
+
+<h3 id="przykładowy-odbiornik-at138b">Przykładowy odbiornik - <strong>AT138B</strong>&nbsp;<a class="anchor" href="#przykładowy-odbiornik-at138b"><i class="small linkify icon"></i></a> </h3>
+
+<p>Pinout:
+<img src="/images/at138b_pinout.jpg" alt="pinout" title="Pinout dla AT138B" /></p>
+
+<p>Podłączamy odbiornik do naszej Raspberry (na schemacie <em>uC</em>) analogicznie do schematu:</p>
+
+<p><img src="/images/AT138B.png" alt="text" title="Przykładowy schemat podłączenia AT138B" /></p>
+
+<p>gdzie:</p>
+
+<ul>
+<li>1 - OUT,</li>
+<li>2 - GND,</li>
+<li>3 - VS.</li>
+</ul>
+
+<blockquote>
+<p><strong>UWAGA!</strong> Bardzo ważne jest to, żeby nie zignorować <strong>kondensatora</strong> między pinami <strong>3</strong>, a <strong>2</strong>! Kondensator umieszcza się po to, by &ldquo;odszumić&rdquo; linię zasilającą odbiornik. W przeciwnym razie <strong>nie będziesz w stanie</strong> poprawnie odczytać kodu wciśniętego na pilocie klawisza, a <em>irw</em> (o tym potem) zasypie Ci konsolę <strong>krzakami</strong>. W ramach ćwiczenia, po skończonym projekcie uruchom <em>irw</em> i wypnij kondensator z układu, żeby przekonać się, o czym mowa.</p>
+</blockquote>
+
+<h2 id="software">Software&nbsp;<a class="anchor" href="#software"><i class="small linkify icon"></i></a> </h2>
+
+<ol>
+<li><p>Instalujemy paczki <em>apt-get&rsquo;em</em>:</p>
+
+<pre><code>sudo apt-get install lirc liblircclient-dev
+sudo apt-get install python-lirc
+</code></pre></li>
+
+<li><p>Dopisujemy <em>lirc</em> do modułów systemu, czyli plik <code>/etc/modules</code> (w nowszych dystrybucjach Raspbiana, od Wheezy w górę <em>lirc</em> jest już wpisany, należałoby jednak to sprawdzić - instrukcja taka sama, jak niżej):</p>
+
+<pre><code>lirc_dev
+lirc_rpi gpio_in_pin=18
+</code></pre>
+
+<p>Dodatkowo ten wpis powinien być w pliku <code>/boot/config</code>, jeśli go tam nie ma to najlepiej dopisać go w ostatniej linii:</p>
+
+<pre><code>dtoverlay=lirc-rpi,gpio_in_pin=18
+</code></pre>
+
+<blockquote>
+<p><strong>UWAGA!</strong> Przy <code>gpio_in_pin</code> podajesz własny numer <strong>GPIO</strong>, czyli tam, gdzie masz wpięty pin <strong>OUT</strong> odbiornika.<br />
+A także, jeśli musiałeś dopisywać/zmieniać powyższe 3 linie niestety musisz strzelić malinie miękki <strong>restart</strong> :)</p>
+</blockquote></li>
+
+<li><p>Teraz odczytywanie kodów pilota powinno już działać. Sprawdźmy to wywołując <em>irw</em>. Jeśli odbiornik jest zajęty przez inny proces trzeba go zwolnić:</p>
+
+<pre><code>ps aux | grep  &lt; -- TO DO
+kill 
+</code></pre></li>
+</ol>
+
+<h1 id="konfiguracja">Konfiguracja&nbsp;<a class="anchor" href="#konfiguracja"><i class="small linkify icon"></i></a> </h1>
+
+<blockquote>
+<p>To, co teraz zrobisz zależy od tego, jaki masz <strong>pilot</strong>. Sprawdź na stronie &hellip;&hellip;&hellip; czy Twój remote jest na liście i ściągnij gotową konfigurację. Dzięki temu trikowi możesz odpuścić sobie krok 1. konfiguracji :D
+A potem możesz przejść do kroku nr. 2.</p>
+</blockquote>
+
+<ol>
+<li><p>Uruchamiamy <em>irrecord</em> i jedziemy wg <strong>instrukcji na ekranie</strong>.<br />
+Efekt powinien wyglądać tak jak tu:</p>
+
+<pre><code>login as: pi
+Authenticating with public key &quot;imported-openssh-key&quot;
+Passphrase for key &quot;imported-openssh-key&quot;:
+Last login: Wed Mar  6 19:53:59 2019 from 192.168.0.16
+pi@raspberrypi:~ $
+</code></pre></li>
+
+<li><p>Mój pilot w <code>lircd.conf</code> wygląda tak:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">begin remote
+    
+name  cyfra+
+bits           13
+flags RC5|CONST_LENGTH
+eps            30
+aeps          100
+    
+one           836   937
+zero          836   937
+plead         816
+gap          113535
+toggle_bit_mask 0x800
+frequency    38000
+    
+    begin codes
+        OK                       0x0297
+        KEY_POWER                0x128C
+        pilot                    0x128F
+        progr                    0x028F
+        plus                     0x12AF
+        KEY_LEFT                 0x0295
+        KEY_RIGHT                0x0296
+        KEY_UP                   0x0290
+        KEY_DOWN                 0x0291
+        KEY_1                    0x1281
+        KEY_2                    0x1282
+        KEY_3                    0x1283
+        KEY_4                    0x1284
+        KEY_5                    0x1285
+        KEY_6                    0x1286
+        KEY_7                    0x1287
+        KEY_8                    0x1288
+        KEY_9                    0x1289
+        KEY_0                    0x1280
+        x                        0x02A1
+        .&gt;                       0x0293
+        serw                     0x0292
+        KEY_MENU                 0x02AA
+        A                        0x02AB
+        B                        0x02AC
+        C                        0x02AD
+        D                        0x02AE
+        E                        0x02AF
+        KEY_MUTE                 0x0286
+        tv/sat                   0x12A8
+    end codes
+    
+end remote</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>Plik z zapisaną konfiguracją kopiujesz do <code>/etc</code>:</p></li>
+
+<li><p>Od tej pory <em>irw</em> powinien pokazać konkretne kody przycisków, gdy naciśniesz je na pilocie:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">pi@raspberrypi:~ $ irw
+0000000000001281 00 KEY_1 cyfra+
+0000000000001287 01 KEY_7 cyfra+
+0000000000001284 00 KEY_4 cyfra+
+0000000000000290 00 KEY_UP cyfra+
+0000000000000291 00 KEY_DOWN cyfra+
+0000000000000296 00 KEY_RIGHT cyfra+
+0000000000000295 00 KEY_LEFT cyfra+
+0000000000000286 01 KEY_MUTE cyfra+
+0000000000001281 00 KEY_1 cyfra+
+000000000000028f 00 progr cyfra+</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>Edytujemy plik <em>lircrc</em>.</p></li>
+
+<li><p>Zapisujemy wciskając <em>Ctrl+X</em>, potem klawiszem <em>T</em> potwierdzamy zapis i wychodzimy z <em>nano</em>.</p></li>
+</ol>
+
+<h1 id="testy">Testy&nbsp;<a class="anchor" href="#testy"><i class="small linkify icon"></i></a> </h1>
+
+<ol>
+<li><p>Wciskasz przyciski pilota i sprawdzasz, czy zapisane w <em>lircrc</em> komendy się wywołują.</p></li>
+
+<li><p>Koniec. Gratulacje, umiesz już sterować maliną za pomocą pilota. Możesz pochwalić się żonie i sąsiadowi :P</p></li>
+</ol>
+
+<h1 id="bonus">BONUS&nbsp;<a class="anchor" href="#bonus"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="modyfikacja-pliku-lircrc">Modyfikacja pliku <em>lircrc</em>&nbsp;<a class="anchor" href="#modyfikacja-pliku-lircrc"><i class="small linkify icon"></i></a> </h2>
+
+<p>Po każdej zmianie pliku <em>lircrc</em> trzeba uruchomić na nowo <em>irexec</em>:</p>
+
+<ol>
+<li><p>Kill&rsquo;ujemy obecnie działający <em>irexec</em> (jeśli obecnie działa) i upewniamy się, że nie ma już żadnych uruchomionych procesów o nazwie <em>irexec</em>:</p>
+
+<pre><code>ps aux | grep irexec
+</code></pre></li>
+
+<li><p>Odpalamy nowy <em>irexec</em>, który załaduje już nasz nowy plik <em>lircrc</em> (<code>irexec -d</code> lub lepiej dla debugu <code>irexec</code>).</p></li>
+</ol>
+
+<blockquote>
+<p><strong>ACHTUNG!</strong> Powyższa instrukcja służy wyłącznie celom edukacyjnym. Wszystko to robisz na własną odpowiedzialność, a autor nie bierze odpowiedzialności za szkody powstałe w wyniku nierozważnych działań.</p>
+</blockquote>
+
+<h2 id="step-3-change-the-docs-site">Step 3. Change the docs site&nbsp;<a class="anchor" href="#step-3-change-the-docs-site"><i class="small linkify icon"></i></a> </h2>
+
+<p>Stop the Hugo process by hitting ctrl+c.</p>
+
+<p>Now we are going to run hugo again, but this time with hugo in watch mode.</p>
+
+<pre><code>/path/to/hugo/from/step/1/hugo server --source=./docs --watch
+&gt; 29 pages created
+&gt; 0 tags index created
+&gt; in 27 ms
+&gt; Web Server is available at http://localhost:1313
+&gt; Watching for changes in /Users/spf13/Code/hugo/docs/content
+&gt; Press ctrl+c to stop
+</code></pre>
+
+<p>Open your <a href="http://vim.spf13.com">favorite editor</a> and change one of the source
+content pages. How about changing this very file to <em>fix the typo</em>. How about changing this very file to <em>fix the typo</em>.</p>
+
+<p>Content files are found in <code>docs/content/</code>. Unless otherwise specified, files
+are located at the same relative location as the url, in our case
+<code>docs/content/overview/quickstart.md</code>.</p>
+
+<p>Change and save this file.. Notice what happened in your terminal.</p>
+
+<pre><code>&gt; Change detected, rebuilding site
+
+&gt; 29 pages created
+&gt; 0 tags index created
+&gt; in 26 ms
+</code></pre>
+
+<p>Refresh the browser and observe that the typo is now fixed.</p>
+
+<p>Notice how quick that was. Try to refresh the site before it&rsquo;s finished building.. I double dare you.
+Having nearly instant feedback enables you to have your creativity flow without waiting for long builds.</p>
+
+				</article>				
+			</section>
+
+			
+			<section class="ui secondary attached segment dream-tags">
+				
+					
+
+
+
+
+	
+		<a class="ui label teal " href="/tags/raspberry" title="raspberry">raspberry</a>
+	
+		<a class="ui label blue " href="/tags/pilot" title="pilot">pilot</a>
+	
+		<a class="ui label yellow " href="/tags/domoticz" title="domoticz">domoticz</a>
+	
+
+
+				
+			</section>
+
+			
+			
+				<section class="ui secondary  attached segment share row box">
+					
+
+
+
+
+
+
+
+
+<div class="author">
+	
+	<img class="avatar" src="https://raw.githubusercontent.com/UtkarshVerma/utkarshverma.github.io/source/static/images/avatar.jpg">
+	
+</div>
+<div class="info grow flexbox">
+	<a href="https://twitter.com/UtkarshVerma_">
+	<p class="name">majki</p>
+	</a>
+	<p class="desc">A keen maker, programmer and an Instructables author.</p>
+</div>
+
+
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Pilot RC5 &quot; by @UtkarshVerma_ https:\/\/dream-plus-posts.netlify.com\/posts\/rc5\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section>
+
+				</section>
+			
+
+			
+			
+								
+				<section class="ui secondary attached segment copyright">
+					
+
+
+
+
+<div class="row box">
+	<a rel="license" class="license image none flexbox" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+		<img alt="Creative Commons License" src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" style="border-width: 0"></img>
+	</a>
+	<span class="license statement both flexbox">
+		This work is licensed under a
+		<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+	</span>
+</div>
+				</section>
+			
+
+			
+			
+				<div class="ui secondary bottom attached stacked segment disqus">
+					
+<div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = 'https:\/\/dream-plus-posts.netlify.com\/posts\/rc5\/';
+		this.page.identifier = 'deb7a3974b1ba8b752f9687be8f74134';
+	};
+	(function() {
+   	var d = document, s = d.createElement('script');
+   	s.src = 'https://' + 'dream-plus' + '.disqus.com/embed.js';
+   	s.setAttribute('data-timestamp', +new Date());
+   	(d.head || d.body).appendChild(s);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+				</div>
+			
+		</div>
+	</div>
+
+				</div>
+				<div class="back">
+					
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="About Me"></i>
+	</div>
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+
+	
+	
+	
+	
+	
+	
+	
+		
+		
+			<div class="item">
+				<a href="https://github.com/UtkarshVerma" target="	_blank">
+					<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+			<div class="item">
+				<a href="mailto:asd.dr4.com" target="	_blank">
+					<i id="ico" class="inverted big link mail icon" title="Email"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+			<div class="item">
+				<a href="https://twitter.com/UtkarshVerma_" target="	_blank">
+					<i id="ico" class="inverted big link twitter icon" title="Twitter"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+			<div class="item">
+				<a href="https://medium.com/@UtkarshVerma_" target="	_blank">
+					<i id="ico" class="inverted big link medium icon" title="Medium"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+			<div class="item">
+				<a href="https://www.stackoverflow.com/users/9271608/utkarsh-verma" target="	_blank">
+					<i id="ico" class="inverted big link stack overflow icon" title="Stack Overflow"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+</nav>
+
+
+
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments">
+			<div class="ui inverted segment">
+				<article class="twemoji">
+					<h1>So, Who Am I?</h1>
+
+<hr />
+
+<p><br>
+I’m just another teenager who likes <strong>writing</strong>, <strong>programming</strong> and <strong>making stuff</strong>. Even setting the title as <strong>Who Am I</strong>  for this article is reminding me of <code>whoami</code> in Linux. I feel the inner urge to contribute something to the Internet because I love writing and I believe posting something online enables users all around the globe to see your work and suggest improvements.</p>
+
+<p>Recently I&rsquo;ve also started taking interest in web designing and hosting the fruitful results of which these site and blogs are! I also make <strong>projects</strong> and share them online at <strong>Instructables</strong>, the link of which has been placed on the home page. Making stuff is just one of the things I love the most.</p>
+
+<p>That’s all that I can think of right now. Hopefully I’ll add something more to this later on. 😅</p>
+
+<p>Curious about me? Use the social links above to check out my profiles.</p>
+
+<p>You can also support me on <a href="https://patreon.com/UtkarshVerma" target="_blank">Patreon</a>. I&rsquo;d really appreciate it.</p>
+
+				</article>
+			</div>
+		</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+	
+	
+		<script id="dsq-count-scr" src="//dream-plus.disqus.com/count.js" async></script>
+	
+
+		
+
+<script src="/js/site.js"></script>
+
+
+
+	<script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.6"></script>
+
+
+
+
+
+
+
+
+
+		
+
+
+		
+
+	<script>
+		(function () {
+		  console.log("Twemoji up and making stuff colourful!");
+		  for (var b = document.getElementsByClassName("twemoji"), a = 0; a < b.length; a++) {
+			twemoji.parse(b[a]);
+		  }
+		})();
+	</script>
+
+
+	</body>
+</html>

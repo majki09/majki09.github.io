@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on malinkowo</title>
+    <link>https://dream-plus-posts.netlify.com/tags/</link>
+    <description>Recent content in Tags on malinkowo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 07 Mar 2019 10:29:23 +0530</lastBuildDate>
+    
+	<atom:link href="https://dream-plus-posts.netlify.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Domoticz</title>
+      <link>https://dream-plus-posts.netlify.com/tags/domoticz/</link>
+      <pubDate>Thu, 07 Mar 2019 10:29:23 +0530</pubDate>
+      
+      <guid>https://dream-plus-posts.netlify.com/tags/domoticz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google Code In</title>
+      <link>https://dream-plus-posts.netlify.com/tags/google-code-in/</link>
+      <pubDate>Sat, 13 Jan 2018 10:29:23 +0530</pubDate>
+      
+      <guid>https://dream-plus-posts.netlify.com/tags/google-code-in/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Openwisp</title>
+      <link>https://dream-plus-posts.netlify.com/tags/openwisp/</link>
+      <pubDate>Sat, 13 Jan 2018 10:29:23 +0530</pubDate>
+      
+      <guid>https://dream-plus-posts.netlify.com/tags/openwisp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pilot</title>
+      <link>https://dream-plus-posts.netlify.com/tags/pilot/</link>
+      <pubDate>Thu, 07 Mar 2019 10:29:23 +0530</pubDate>
+      
+      <guid>https://dream-plus-posts.netlify.com/tags/pilot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raspberry</title>
+      <link>https://dream-plus-posts.netlify.com/tags/raspberry/</link>
+      <pubDate>Thu, 07 Mar 2019 10:29:23 +0530</pubDate>
+      
+      <guid>https://dream-plus-posts.netlify.com/tags/raspberry/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
