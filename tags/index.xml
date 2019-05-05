@@ -5,10 +5,37 @@
     <link>https://majki09.github.io/tags/</link>
     <description>Recent content in Tags on malinkowo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 07 Mar 2019 10:29:23 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 05 May 2019 21:20:32 +0200</lastBuildDate>
     
 	<atom:link href="https://majki09.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Atmelstudio</title>
+      <link>https://majki09.github.io/tags/atmelstudio/</link>
+      <pubDate>Sun, 05 May 2019 21:20:32 +0200</pubDate>
+      
+      <guid>https://majki09.github.io/tags/atmelstudio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Avr</title>
+      <link>https://majki09.github.io/tags/avr/</link>
+      <pubDate>Sun, 05 May 2019 21:20:32 +0200</pubDate>
+      
+      <guid>https://majki09.github.io/tags/avr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Avrdude</title>
+      <link>https://majki09.github.io/tags/avrdude/</link>
+      <pubDate>Sun, 05 May 2019 21:20:32 +0200</pubDate>
+      
+      <guid>https://majki09.github.io/tags/avrdude/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Domoticz</title>
@@ -47,11 +74,29 @@
     </item>
     
     <item>
+      <title>Programowanie</title>
+      <link>https://majki09.github.io/tags/programowanie/</link>
+      <pubDate>Sun, 05 May 2019 21:20:32 +0200</pubDate>
+      
+      <guid>https://majki09.github.io/tags/programowanie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Raspberry</title>
       <link>https://majki09.github.io/tags/raspberry/</link>
       <pubDate>Thu, 07 Mar 2019 10:29:23 +0530</pubDate>
       
       <guid>https://majki09.github.io/tags/raspberry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Usbasp</title>
+      <link>https://majki09.github.io/tags/usbasp/</link>
+      <pubDate>Sun, 05 May 2019 21:20:32 +0200</pubDate>
+      
+      <guid>https://majki09.github.io/tags/usbasp/</guid>
       <description></description>
     </item>
     

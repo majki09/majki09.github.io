@@ -2,7 +2,7 @@
 <html lang="">
 	<head>
 		<title>
-	Archive
+	USBasp w AtmelStudio
 </title>
 		<style>
 	body {
@@ -29,7 +29,7 @@
 	
 	
 	<meta name="author" content="majki" />
-	<meta name="description" content="" />
+	<meta name="description" content="Implementacja obsługi programatora USBasp w AtmelStudio" />
 
 
 
@@ -39,8 +39,6 @@
 <link rel="shortcut icon" href="/img/defaultFav.ico">
 
 
-
-    <link rel="alternate" type="application/rss+xml" href="https://majki09.github.io/posts/index.xml" title="malinkowo" />
 
 
 		
@@ -177,28 +175,28 @@ var bodyBgSwitchIndex = 0;
 	
 		
 			
-			<a class="ui label orange " href="/tags/atmelstudio" title="atmelstudio">atmelstudio</a>
+			<a class="ui label teal " href="/tags/atmelstudio" title="atmelstudio">atmelstudio</a>
 		
 			
-			<a class="ui label green " href="/tags/avr" title="avr">avr</a>
+			<a class="ui label pink " href="/tags/avr" title="avr">avr</a>
 		
 			
-			<a class="ui label teal " href="/tags/avrdude" title="avrdude">avrdude</a>
+			<a class="ui label brown " href="/tags/avrdude" title="avrdude">avrdude</a>
 		
 			
-			<a class="ui label yellow " href="/tags/domoticz" title="domoticz">domoticz</a>
+			<a class="ui label red " href="/tags/domoticz" title="domoticz">domoticz</a>
 		
 			
 			<a class="ui label purple " href="/tags/google-code-in" title="google-code-in">google-code-in</a>
 		
 			
-			<a class="ui label orange " href="/tags/openwisp" title="openwisp">openwisp</a>
+			<a class="ui label violet " href="/tags/openwisp" title="openwisp">openwisp</a>
 		
 			
-			<a class="ui label red " href="/tags/pilot" title="pilot">pilot</a>
+			<a class="ui label brown " href="/tags/pilot" title="pilot">pilot</a>
 		
 			
-			<a class="ui label violet " href="/tags/programowanie" title="programowanie">programowanie</a>
+			<a class="ui label brown " href="/tags/programowanie" title="programowanie">programowanie</a>
 		
 	
 
@@ -346,6 +344,12 @@ var bodyBgSwitchIndex = 0;
 
 	
 	
+		<div class="ui container tablet computer only grid">
+			<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+				<i class="inverted big link sidebar icon" title="Show Sidebar"></i>
+			</div>
+		</div>
+	
 
 	
 	
@@ -357,10 +361,11 @@ var bodyBgSwitchIndex = 0;
 	
 </nav>
 
+
 	<div class="ui centered grid">
 		
-		<div class="sixteen wide mobile fifteen wide tablet four wide computer column">
-			<div class="ui inverted accordion">
+		<div class="sixteen wide mobile only column">
+				<div class="ui inverted accordion">
 	<div id="header" class="ui inverted segment column box">		
 		
 		<header id="author" class="ui top attached center aligned inverted segment">
@@ -380,16 +385,16 @@ var bodyBgSwitchIndex = 0;
 		</header>
 
 		
-		<div class="active title header-title">
+		<div class=" title header-title">
 			
 				<div id="tag-category-pop" class="ui red right corner label">
-					<i class="hand point icon up" title="Show/hide tags and categories"></i>
+					<i class="hand point icon down" title="Show/hide tags and categories"></i>
 				</div>
 			
 		</div>
 		
 		
-		<div id="tag-category" class="active content">
+		<div id="tag-category" class=" content">
 			
 				<section class="ui attached center aligned inverted segment dream-tags none flexbox">
 					
@@ -406,25 +411,25 @@ var bodyBgSwitchIndex = 0;
 			<a class="ui label red " href="/tags/atmelstudio" title="atmelstudio">atmelstudio</a>
 		
 			
-			<a class="ui label purple " href="/tags/avr" title="avr">avr</a>
+			<a class="ui label blue " href="/tags/avr" title="avr">avr</a>
 		
 			
-			<a class="ui label pink " href="/tags/avrdude" title="avrdude">avrdude</a>
+			<a class="ui label brown " href="/tags/avrdude" title="avrdude">avrdude</a>
 		
 			
-			<a class="ui label green " href="/tags/domoticz" title="domoticz">domoticz</a>
+			<a class="ui label brown " href="/tags/domoticz" title="domoticz">domoticz</a>
 		
 			
-			<a class="ui label yellow " href="/tags/google-code-in" title="google-code-in">google-code-in</a>
+			<a class="ui label green " href="/tags/google-code-in" title="google-code-in">google-code-in</a>
 		
 			
-			<a class="ui label brown " href="/tags/openwisp" title="openwisp">openwisp</a>
+			<a class="ui label teal " href="/tags/openwisp" title="openwisp">openwisp</a>
 		
 			
-			<a class="ui label olive " href="/tags/pilot" title="pilot">pilot</a>
+			<a class="ui label violet " href="/tags/pilot" title="pilot">pilot</a>
 		
 			
-			<a class="ui label brown " href="/tags/programowanie" title="programowanie">programowanie</a>
+			<a class="ui label purple " href="/tags/programowanie" title="programowanie">programowanie</a>
 		
 	
 
@@ -529,38 +534,146 @@ var bodyBgSwitchIndex = 0;
 
 		</div>
 
-		
-		<div class="sixteen wide mobile fifteen wide tablet eleven wide computer column post-list">
-			<div class="ui inverted segment">
-				<h2 class="ui header">Archive<hr>
-					<div class="ui grey sub header"></div>
-				</h2>
+		<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+			
+			<section class="ui secondary top attached black segment post-head">
+				<h1 class="post-title">
+					USBasp w AtmelStudio
+				</h1>
+
+				<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>May 5, 2019</span></div>
+					
+					<div><span><i class="clock outline icon"></i>1 min read</span></div>
+					<div><span><i class="angle double up icon"></i>Last updated on May 5, 2019</span></div>
+				</div>
+				<hr>
 
 				
-					<h3 class="ui header">2019</h3>
-					<ul>
-						
-							<li><a href="https://majki09.github.io/posts/atmelstudio_usbasp/">USBasp w AtmelStudio</a></li>
-						
-							<li><a href="https://majki09.github.io/posts/rc5/">Pilot RC5</a></li>
-						
-					</ul>
+					<div class="toc">
+						<nav id="TableOfContents">
+<ul>
+<li><a href="#wstęp">Wstęp</a></li>
+<li><a href="#test">Test</a></li>
+</ul>
+</nav>
+					</div>
 				
-					<h3 class="ui header">2018</h3>
-					<ul>
-						
-							<li><a href="https://majki09.github.io/posts/gci/">Google Code-in with OpenWISP</a></li>
-						
-					</ul>
+
+				<article class="post-content twemoji">
+					
+
+<h1 id="wstęp">Wstęp&nbsp;<a class="anchor" href="#wstęp"><i class="small linkify icon"></i></a> </h1>
+
+<p>Wpis poświęcony integracji programatora USBasp w programie AtmelStudio.</p>
+
+<h1 id="test">Test&nbsp;<a class="anchor" href="#test"><i class="small linkify icon"></i></a> </h1>
+
+<p>Przetestować komunikację można wywołując komendę w linii poleceń:</p>
+
+<pre><code>avrdude -c usbasp -p m328p
+</code></pre>
+
+<p>gdzie <em>m328p</em> to typ naszego mikroprocka, pełną listę możemy uzyskać wywołując komendę <code>avrdude -c usbasp</code>. Jeśli wszystko jest OK powinniśmy dostać taki output:</p>
+
+<p>Natomiast jeśli avrdude nie wykryje programatora dostaniemy coś takiego:</p>
+
+<pre><code>C:\&gt;avrdude -c usbasp -p m328p
+avrdude: error: could not find USB device with vid=0x16c0 pid=0x5dc vendor='www.fischl.de' product='USBasp'
+
+avrdude done.  Thank you.
+</code></pre>
+
+				</article>				
+			</section>
+
+			
+			<section class="ui secondary attached segment dream-tags">
 				
-					<h3 class="ui header">2014</h3>
-					<ul>
-						
-							<li><a href="https://majki09.github.io/posts/creating-a-new-theme/">Creating a New Theme</a></li>
-						
-					</ul>
+					
+
+
+
+
+	
+		<a class="ui label violet " href="/tags/avr" title="AVR">AVR</a>
+	
+		<a class="ui label blue " href="/tags/atmelstudio" title="AtmelStudio">AtmelStudio</a>
+	
+		<a class="ui label pink " href="/tags/usbasp" title="USBasp">USBasp</a>
+	
+		<a class="ui label purple " href="/tags/avrdude" title="avrdude">avrdude</a>
+	
+		<a class="ui label purple " href="/tags/programowanie" title="programowanie">programowanie</a>
+	
+
+
 				
-			</div>
+			</section>
+
+			
+			
+				<section class="ui secondary bottom attached segment share row box">
+					
+
+
+
+
+
+
+
+
+<div class="author">
+	
+	<img class="avatar" src="https://raw.githubusercontent.com/UtkarshVerma/utkarshverma.github.io/source/static/images/avatar.jpg">
+	
+</div>
+<div class="info grow flexbox">
+	
+	<p class="name">majki</p>
+	
+	<p class="desc">A keen maker, programmer and an Instructables author.</p>
+</div>
+
+
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;USBasp w AtmelStudio  https:\/\/majki09.github.io\/posts\/atmelstudio_usbasp\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section>
+
+				</section>
+			
+
+			
+			
+								
+				<section class="ui secondary attached segment copyright">
+					
+
+
+
+
+<div class="row box">
+	<a rel="license" class="license image none flexbox" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+		<img alt="Creative Commons License" src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" style="border-width: 0"></img>
+	</a>
+	<span class="license statement both flexbox">
+		This work is licensed under a
+		<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+	</span>
+</div>
+				</section>
+			
+
+			
+			
 		</div>
 	</div>
 
@@ -665,6 +778,9 @@ I’m just another teenager who likes <strong>writing</strong>, <strong>programm
 			</div>
 		</div>
 		
+	
+	
+
 		
 
 <script src="/js/site.js"></script>

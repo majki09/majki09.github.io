@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Avrdude on malinkowo</title>
+    <link>https://majki09.github.io/tags/avrdude/</link>
+    <description>Recent content in Avrdude on malinkowo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 05 May 2019 21:20:32 +0200</lastBuildDate>
+    
+	<atom:link href="https://majki09.github.io/tags/avrdude/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>USBasp w AtmelStudio</title>
+      <link>https://majki09.github.io/posts/atmelstudio_usbasp/</link>
+      <pubDate>Sun, 05 May 2019 21:20:32 +0200</pubDate>
+      
+      <guid>https://majki09.github.io/posts/atmelstudio_usbasp/</guid>
+      <description>Wstęp Wpis poświęcony integracji programatora USBasp w programie AtmelStudio.
+Test Przetestować komunikację można wywołując komendę w linii poleceń:
+avrdude -c usbasp -p m328p  gdzie m328p to typ naszego mikroprocka, pełną listę możemy uzyskać wywołując komendę avrdude -c usbasp. Jeśli wszystko jest OK powinniśmy dostać taki output:
+Natomiast jeśli avrdude nie wykryje programatora dostaniemy coś takiego:
+C:\&amp;gt;avrdude -c usbasp -p m328p avrdude: error: could not find USB device with vid=0x16c0 pid=0x5dc vendor=&#39;www.</description>
+    </item>
+    
+  </channel>
+</rss>
