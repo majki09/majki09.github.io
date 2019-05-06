@@ -499,7 +499,7 @@ p > img:not(.emoji), li > img {
 
 .facebook {
   align-self: flex-start;
-  width: 7.5em;
+  /*width: 7.5em;*/
   margin-right: 0.1em;
   -webkit-transition: 1s;
   -o-transition: 1s;
@@ -795,9 +795,10 @@ p > img:not(.emoji), li > img {
 
 .blog-card .title {
   color: #fff;
-  font: 400 2rem 'Abril Fatface', cursive;
-  letter-spacing: 1px;
-  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  /* font: 400 2rem 'Abril Fatface', cursive; */
+  font: 400 3rem 'Bebas Neue', cursive;
+  letter-spacing: 2px;
+  text-shadow: 0 7px 10px rgba(0, 0, 0, 0.5);
   -webkit-transition: 0.4s;
   -o-transition: 0.4s;
   transition: 0.4s;
@@ -838,8 +839,9 @@ p > img:not(.emoji), li > img {
 
 .intro {
   margin: auto;
-  font: 200 1.2rem 'Droid Serif Italic';
-  line-height: 1.2rem;
+  /* font: 200 1.2rem 'Droid Serif Italic'; */
+  font: 200 1.3rem 'Lato';
+  /* line-height: 1.2rem; */
   width: 80%;
   color: #ddd;
   opacity: 0;
