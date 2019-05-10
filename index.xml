@@ -17,10 +17,9 @@
       
       <guid>https://majki09.github.io/posts/atmelstudio_usbasp/</guid>
       <description>Wstęp Wpis poświęcony integracji programatora USBasp w programie AtmelStudio.
-Test Przetestować komunikację można wywołując komendę w linii poleceń:
-avrdude -c usbasp -p m328p  gdzie m328p to typ naszego mikroprocka, pełną listę możemy uzyskać wywołując komendę avrdude -c usbasp. Jeśli wszystko jest OK powinniśmy dostać taki output:
-Natomiast jeśli avrdude nie wykryje programatora dostaniemy coś takiego:
-C:\&amp;gt;avrdude -c usbasp -p m328p avrdude: error: could not find USB device with vid=0x16c0 pid=0x5dc vendor=&#39;www.</description>
+ Ten wpis jest jeszcze nie ukończony. Oznacza to, że będę go jeszcze dopracowywał, a widnieje tutaj w ramach testów bloga. Dziękuję Ci za wyrozumiałość i proszę o troszeczkę cierpliwości, ponieważ już wkrótce blog wraz z wszystkimi wpisami ruszy pełną parą!
+ Test Przetestować komunikację można wywołując komendę w linii poleceń:
+avrdude -c usbasp -p m328p  gdzie m328p to typ naszego mikroprocka, pełną listę możemy uzyskać wywołując komendę avrdude -c usbasp.</description>
     </item>
     
     <item>
