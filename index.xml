@@ -47,11 +47,10 @@ avrdude -c usbasp -p m328p  gdzie m328p to typ naszego mikroprocka, pełną list
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://majki09.github.io/about/</guid>
-      <description>Kto ja jestem? 
-Nazywam się Łukasz Majkut.
+      <description>Kim jestem? Nazywam się Łukasz Majkut.
 Lubię elektronikę i większość co związana z komputerami, czyli od programowania, po obróbkę obrazu i wideo.
-Trochę też z fotografii. Czy jestem fotografem? Jeśli fotograf, to osoba, która robi zdjęcia aparatem to tak, jestem fotografem 😄
-Patreon. I&#39;d really appreciate it. -- </description>
+Ciekawi mnie też fotografia, w sumie to od zawsze ciekawiła. Czy jestem fotografem? Jeśli fotograf, to osoba, która robi zdjęcia to tak, jestem fotografem 😄. Już niebawem na tym blogu powstaną wpisy na temat właśnie fotografii, będzie coś o podstawach, jak i obróbce zdjęć w Lightroomie.
+Od czterech lat pracuję jako inżynier ICT w dużej firmie w Krakowie.</description>
     </item>
     
   </channel>
