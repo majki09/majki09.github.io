@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<title>
+	Wykrywanie domowników
+</title>
+		<style>
+	body {
+		display: block;
+		--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		
+	}
+
+	body, body.pushable {
+		background-repeat: no-repeat;
+	  	background-attachment: fixed;
+	  	background-size: cover !important;
+	}
+</style>
+
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+	
+	
+	
+	<meta name="author" content="majki" />
+	<meta name="description" content="Piszemy skrypt do sprawdzania obecności ludzi w domu" />
+
+
+
+<meta name="generator" content="Hugo 0.54.0" />
+
+
+<link rel="shortcut icon" href="/img/defaultFav.ico">
+
+
+
+
+		
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script
+	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+
+ <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Inconsolata" rel="stylesheet"> 
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/site.css">
+
+
+
+
+
+
+	
+		<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/UtkarshVerma/hugo-dream-plus/ae11561d/exampleSite/static/css/highlight.css">
+	
+
+
+
+<style>
+	body.pushable {
+		display: block;
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		 ;
+	}
+</style>
+
+
+
+<script>
+	var colorBG =  true 
+	
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+
+	</head>
+
+	<body>
+		<script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+
+
+
+
+
+
+	var gradients = [
+	  [],
+	  ['#40e0d0', '#ff8c00', '#ff0080'], 
+	  ['#3e5151', '#decba4'], 
+	  ['#11998e', '#38ef7d'], 
+	  ['#108dc7', '#ef8e38'], 
+	  ['#fc5c7d', '#6a82fb'], 
+	  ['#fc466b', '#3f5efb'], 
+	  ['#c94b4b', '#4b134f'], 
+	  ['#23074d', '#cc5333'] 
+	];
+	document.body.style.setProperty('--colorBG', connect(gradients[getRandomInt(0, gradients.length)]));
+
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  var random;
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min;
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random;
+	      break;
+	    }
+	  }
+	  return random;
+	}
+
+	function connect(arr) {
+	  var str = '';
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', ';
+	    } else {
+	      str += arr[i];
+	    }
+	  }
+	  return str;
+	}
+</script>
+
+
+
+
+		<div id="sidebar" class="ui sidebar inverted vertical menu">
+	
+	<section id="author" class="ui top attached center aligned inverted segment">
+		
+<div class="ui small circular image">
+	
+		<img src="/images/ja_awatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	majki
+	<div class="sub header">Wszystko jest możliwe - niemożliwe potrzebuje tylko więcej czasu.</div>
+</h3>
+
+	</section>
+
+	
+	
+		<section class="ui attached center aligned inverted segment sidebar-dream-tags">
+			
+			
+			
+			
+
+
+
+
+	
+	
+		
+			
+			<a class="ui label purple " href="/tags/programowanie" title="programowanie">programowanie</a>
+		
+			
+			<a class="ui label green " href="/tags/domoticz" title="domoticz">domoticz</a>
+		
+			
+			<a class="ui label brown " href="/tags/raspberry" title="raspberry">raspberry</a>
+		
+			
+			<a class="ui label pink " href="/tags/atmelstudio" title="atmelstudio">atmelstudio</a>
+		
+			
+			<a class="ui label orange " href="/tags/avr" title="avr">avr</a>
+		
+			
+			<a class="ui label pink " href="/tags/avrdude" title="avrdude">avrdude</a>
+		
+			
+			<a class="ui label green " href="/tags/lua" title="lua">lua</a>
+		
+			
+			<a class="ui label blue " href="/tags/pilot" title="pilot">pilot</a>
+		
+	
+
+
+		</section>
+	
+
+	
+	
+		<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+			<div class="ui inverted accordion">
+				
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/avr">avr</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/atmelstudio_usbasp/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>USBasp w AtmelStudio</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/domoticz">domoticz</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/brak-ruchu-w-domu/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Wykrywanie domowników</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/raspberry">raspberry</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/rc5/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Raspberry Pi na pilota</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+			</div>
+		</section>
+	
+
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+		
+
+	<p>© 2019 majki-blog</p>
+
+
+<p>Zasilane przez <a href="https://gohugo.io/" target="_blank">Hugo</a> z motywem <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus.</a></p>
+
+	</section>
+</div>
+
+
+		<div class="pusher">
+			<div class="flipper">
+				<div class="front">
+					
+	<nav class="ui top secondary menu bar">
+	
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="O mnie kilka słów"></i>
+	</div>
+
+	
+	
+		<div class="item">
+			<a href="/">
+				<i class="inverted big link home icon" title="Główna strona"></i>
+			</a>
+		</div>
+	
+
+	
+	
+
+	
+	
+		<div class="item">
+			<a href="/tags">
+				<i class="inverted big link tags icon" title="Wszystkie tagi"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		<div class="item">
+			<a href="/categories">
+				<i class="inverted big link cubes icon" title="Wszystkie kategorie"></i>
+			</a>
+    	</div>
+	
+
+	
+	
+
+	
+	
+		<div class="ui container tablet computer only grid">
+			<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+				<i class="inverted big link sidebar icon" title="Pokazuj boczny pasek"></i>
+			</div>
+		</div>
+	
+
+	
+	
+		<div class="item right">
+			<a href="/posts/index.xml">
+				<i class="inverted big link rss icon" title="RSS"></i>
+			</a>
+		</div>
+	
+</nav>
+
+
+	<div class="ui centered grid">
+		
+		<div class="sixteen wide mobile only column">
+				<div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">		
+		
+		<header id="author" class="ui top attached center aligned inverted segment">
+			
+<div class="ui small circular image">
+	
+		<img src="/images/ja_awatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	majki
+	<div class="sub header">Wszystko jest możliwe - niemożliwe potrzebuje tylko więcej czasu.</div>
+</h3>
+
+		</header>
+
+		
+		<div class=" title header-title">
+			
+				<div id="tag-category-pop" class="ui red right corner label">
+					<i class="hand point icon down" title="Pokaż/ukryj tagi i kategorie"></i>
+				</div>
+			
+		</div>
+		
+		
+		<div id="tag-category" class=" content">
+			
+				<section class="ui attached center aligned inverted segment dream-tags none flexbox">
+					
+					
+					
+
+
+
+
+	
+	
+		
+			
+			<a class="ui label yellow " href="/tags/programowanie" title="programowanie">programowanie</a>
+		
+			
+			<a class="ui label green " href="/tags/domoticz" title="domoticz">domoticz</a>
+		
+			
+			<a class="ui label orange " href="/tags/raspberry" title="raspberry">raspberry</a>
+		
+			
+			<a class="ui label brown " href="/tags/atmelstudio" title="atmelstudio">atmelstudio</a>
+		
+			
+			<a class="ui label olive " href="/tags/avr" title="avr">avr</a>
+		
+			
+			<a class="ui label purple " href="/tags/avrdude" title="avrdude">avrdude</a>
+		
+			
+			<a class="ui label blue " href="/tags/lua" title="lua">lua</a>
+		
+			
+			<a class="ui label yellow " href="/tags/pilot" title="pilot">pilot</a>
+		
+	
+
+
+				</section>
+			
+
+			
+				<section class="ui attached inverted segment dream-categories both flexbox">
+					<div class="inverted accordion">
+						
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/avr">avr</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/atmelstudio_usbasp/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>USBasp w AtmelStudio</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/domoticz">domoticz</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/brak-ruchu-w-domu/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Wykrywanie domowników</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/raspberry">raspberry</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/rc5/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Raspberry Pi na pilota</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+					</div>
+				</section>
+			
+		</div>
+
+		
+		<footer class="ui bottom attached center aligned inverted segment">
+			
+
+	<p>© 2019 majki-blog</p>
+
+
+<p>Zasilane przez <a href="https://gohugo.io/" target="_blank">Hugo</a> z motywem <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus.</a></p>
+
+		</footer>
+	</div>
+</div>
+
+		</div>
+
+		<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+			
+			<section class="ui secondary top attached black segment post-head">
+				<h1 class="post-title">
+					Wykrywanie domowników
+				</h1>
+
+				<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>13.05.2019</span></div>
+					
+					<div><span class="disqusComment"><i class="comment outline icon"></i><a href="https://majki09.github.io/posts/brak-ruchu-w-domu/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="af9ec6ad842a757f4c8502982ce1b3ff"></a></span></div>
+					<div><span><i class="clock outline icon"></i>7 min czytania</span></div>
+					<div><span><i class="angle double up icon"></i>Ostatnia zmiana 13.05.2019</span></div>
+				</div>
+				<hr>
+
+				
+					<div class="toc">
+						<nav id="TableOfContents">
+<ul>
+<li><a href="#kilka-słów-wstępu">Kilka słów wstępu</a></li>
+<li><a href="#od-czego-zacząć">Od czego zacząć</a></li>
+<li><a href="#co-będzie-potrzebne">Co będzie potrzebne</a></li>
+<li><a href="#jedziemy-z-koksem">Jedziemy z koksem</a>
+<ul>
+<li><a href="#tworzymy-dummy-switcha">Tworzymy <em>dummy switcha</em></a></li>
+<li><a href="#piszemy-skrypt">Piszemy skrypt</a>
+<ul>
+<li><a href="#omówienie-poszczególnych-fragmentów-skryptu">Omówienie poszczególnych fragmentów skryptu</a></li>
+<li><a href="#cały-skrypt">Cały skrypt</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#testy">Testy</a></li>
+<li><a href="#przykład-zastosowania">Przykład zastosowania</a>
+<ul>
+<li><a href="#wyłączanie-lampki-gdy-nie-ma-ludzi-w-domu">Wyłączanie lampki, gdy nie ma ludzi w domu</a></li>
+</ul></li>
+<li><a href="#linki">Linki</a></li>
+</ul>
+</nav>
+					</div>
+				
+
+				<article class="post-content twemoji">
+					
+
+<h1 id="kilka-słów-wstępu">Kilka słów wstępu&nbsp;<a class="anchor" href="#kilka-słów-wstępu"><i class="small linkify icon"></i></a> </h1>
+
+<p>Czasami potrzebujemy wiedzieć, czy są jacyś ludzie w domu albo czy może nie ma nikogo. W tym poradniku zgłębimy tajemnicę automatycznego wykrywania domowników i napiszemy skrypt w języku <strong>Lua</strong> dla <strong>domoticz</strong>. Taki skrypt pomoże nam wykrywać, czy ludzie są w domu, bądź też czy ich nie ma i odpowiednio na to reagować. Dzięki temu będzie można zaprogramować sporo ciekawych akcji i tak na przykład przy wejściu do domu <strong>asystent głosowy</strong> krótko powie nam o wszystkim, co nas ominęło, a potem puści naszą ulubioną muzykę. A gdy wyjdziemy z domu - automatycznie wyłączy włączony telewizor, oświetlenie, czy nawet uzbroi alarm i kamery. Ogólnie - czego dusza zapragnie.</p>
+
+<h1 id="od-czego-zacząć">Od czego zacząć&nbsp;<a class="anchor" href="#od-czego-zacząć"><i class="small linkify icon"></i></a> </h1>
+
+<p>Nasz ficzer będzie polegał na pewnej logice i będzie wymagał jakichś urządzeń wejściowych, którymi mogą być:</p>
+
+<ul>
+<li>smartfon (wykorzystanie Wi-Fi, domoticz co jakiś czas <strong>pinguje</strong> do domoticza i na tej zasadzie sprawdza obecność domownika),</li>
+<li>drzwi wejściowe z czujnikami pozycji rygla (tu bardziej wykrywanie zamkniętych na klucz drzwi),</li>
+<li>czujniki ruchu na podczerwień.</li>
+</ul>
+
+<p>W zależności od tego, czego docelowo potrzebujemy i które z powyższych opcji wybierzemy będziemy musieli inaczej podziałać. Jako, że opcje smartfona i zamków w drzwiach są trywialne i ich opisy są ogólnodostępne w Internecie, skupimy się na ostatniej opcji - opcji z czujnikami ruchu. Oczywiście, jeśli dasz mi znać w komentarzach, że potrzebujesz opisu opcji pozostałych, wezmę pod uwagę napisanie postu z takim opisem.</p>
+
+<h1 id="co-będzie-potrzebne">Co będzie potrzebne&nbsp;<a class="anchor" href="#co-będzie-potrzebne"><i class="small linkify icon"></i></a> </h1>
+
+<ul>
+<li>software<br />
+
+<ul>
+<li>zainstalowany domoticz, najlepiej w wersji PL, bo poradnik bazuje na takiej.</li>
+</ul></li>
+<li>hardware
+
+<ul>
+<li>czujki ruchu, mogą to być czujki Xiaomi albo, jeśli masz, to system alarmowy zintegrowany z domoticz.</li>
+</ul></li>
+<li>know-how na temat systemu <strong>domoticz</strong>
+
+<ul>
+<li>jak utworzyć <em>dummy switch</em>,</li>
+<li>jak tworzyć zdarzenia,</li>
+<li>jak odczytać logi.</li>
+</ul></li>
+</ul>
+
+<h1 id="jedziemy-z-koksem">Jedziemy z koksem&nbsp;<a class="anchor" href="#jedziemy-z-koksem"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="tworzymy-dummy-switcha">Tworzymy <em>dummy switcha</em>&nbsp;<a class="anchor" href="#tworzymy-dummy-switcha"><i class="small linkify icon"></i></a> </h2>
+
+<p>Załóżmy, że na potrzeby tej akcji utworzymy <em>dummy switcha</em> i nazwiemy go <strong>Ludzie w domu</strong>. Ten <em>dummy switch</em> będzie miał kilka zastosowań:</p>
+
+<ul>
+<li>będzie widoczną <em>flagą</em> stanu <strong>Ludzie w domu</strong>,</li>
+<li>jako, że będzie <em>switchem</em> będzie dostępny w poziomu <strong>Przełączniki</strong> w <strong>domoticz</strong> i będzie można sprawdzić jego historię, utworzyć powiadomienia, itp.,</li>
+<li>będzie można reagować na jego zmiany w skryptach <strong>Zdarzeń</strong>.</li>
+</ul>
+
+<p>Wchodzimy po kolei: <em>Konfiguracja &gt; Sprzęt</em> i klikamy na przycisk <em>Utwórz wirtualne czujniki</em>
+<img src="/images/ludzie-w-domu-dummy-switch-dodawanie.png" alt="dodaj-dummy-switcha" title="Okno konfiguracji sprzętu - Utwórz wirtualne czujniki" />
+Wpisujemy nazwę i ustawiamy <em>Typ czujnika</em> na <strong>Przełącznik</strong>:
+<img src="/images/ludzie-w-domu-dummy-switch-dodawanie-wirtual.png" alt="dodaj-dummy-switcha" title="Okno Utwórz wirtualny czujnik" /></p>
+
+<p>Teraz jeszcze wchodzimy w <em>Przełączniki</em> i edytujemy naszego <em>switcha</em>. <strong>Typ przełącznika</strong> ustawiamy na <em>Motion Sensor</em>: <img src="/images/ludzie-w-domu-edycja-dummy-switch.png" alt="konfiguracja" title="Konfiguracja dummy switcha Ludzie w domu" /></p>
+
+<p><em>Switch</em> po utworzeniu i skonfigurowaniu powinien wyglądać tak:
+<img src="/images/ludzie-w-domu-dummy-switch.png" alt="switch" title="Dummy switch Ludzie w domu" /></p>
+
+<h2 id="piszemy-skrypt">Piszemy skrypt&nbsp;<a class="anchor" href="#piszemy-skrypt"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>Przy zdarzeniach wywoływanych czasem (Trigger <em>Time</em>) pamiętaj, że:</p>
+
+<ul>
+<li>każdy taki skrypt uruchamiany jest automatycznie co minutę wraz z nastaniem nowej minuty (czyli sekundnik = <strong>00</strong>),</li>
+<li>nie należy tutaj szaleć z karkołomnymi obliczeniami, czy skomplikowanymi skryptami, tylko proste operacje i odczytywanie lub ustawianie stanów.</li>
+</ul>
+</blockquote>
+
+<h3 id="omówienie-poszczególnych-fragmentów-skryptu">Omówienie poszczególnych fragmentów skryptu&nbsp;<a class="anchor" href="#omówienie-poszczególnych-fragmentów-skryptu"><i class="small linkify icon"></i></a> </h3>
+
+<p>Weźmy pod uwagę przypadek z czterema <strong>czujkami ruchu</strong>, <em>PIR1..PIR4</em>. Zaczynamy od definicji podstawowych zmiennych. Zwróć uwagę na zapis wartości <code>no_motion_tresh</code> - zamiast pisać <strong>900</strong> lepiej napisać <strong>15 *60</strong>, co jest dużo bardziej czytelne dla ludzi (dla głupiej maszyny to żadna różnica, wartość będzie ta sama). W ten sposób od razu widać, że czas ustawiony jest na <strong>15 minut</strong>. Zachęcam Cię do stosowania podobnych praktyk, bo jak wiemy - czytelny kod <strong>=</strong> lepszy świat :)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">PIR1</span> <span class="o">=</span> <span class="s1">&#39;Korytarz&#39;</span>
+<span class="kd">local</span> <span class="n">PIR2</span> <span class="o">=</span> <span class="s1">&#39;Kuchnia&#39;</span>
+<span class="kd">local</span> <span class="n">PIR3</span> <span class="o">=</span> <span class="s1">&#39;Mały pokój&#39;</span>
+<span class="kd">local</span> <span class="n">PIR4</span> <span class="o">=</span> <span class="s1">&#39;Duży pokój&#39;</span>
+<span class="kd">local</span> <span class="n">switch_name</span> <span class="o">=</span> <span class="s1">&#39;Ludzie w domu&#39;</span>     <span class="c1">-- nasz dummy switch, który będziemy ustawiać</span>
+<span class="kd">local</span> <span class="n">no_motion_tresh</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">*</span><span class="mi">60</span>          <span class="c1">-- po tylu sekundach bezruchu nasza automatyka zadziała</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Skoro mamy już zdefiniowane podstawowe <strong>zmienne</strong>, przydałoby się jakoś mierzyć <strong>czas bezruchu</strong>. Dlatego napiszemy sobie fukcję <code>timedifference</code>. Funkcja ta wykorzystując wbudowaną w <em>lua</em> fukcję <code>os.difftime</code> oblicza i zwraca <strong>liczbę sekund</strong> między czasem podanym w parametrze <code>timestamp</code>, a obecnym czasem (<code>os.time()</code>). Dzięki niej będziemy wiedzieli kiedy ostatnio dany czujnik zmienił swój stan:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kr">function</span> <span class="nf">timedifference</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+  <span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">timestamp</span><span class="p">:</span><span class="n">match</span><span class="p">(</span><span class="s2">&#34;(%d+)-(%d+)-(%d+) (%d+):(%d+):(%d+)&#34;</span><span class="p">)</span>
+  <span class="n">difference</span> <span class="o">=</span> <span class="n">os.difftime</span><span class="p">(</span><span class="n">os.time</span><span class="p">(),</span> <span class="n">os.time</span><span class="p">{</span><span class="n">year</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">hour</span><span class="o">=</span><span class="n">H</span><span class="p">,</span> <span class="n">min</span><span class="o">=</span><span class="n">M</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="n">S</span><span class="p">})</span>
+  <span class="kr">return</span> <span class="n">difference</span>
+<span class="kr">end</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Potrzebne będzie jeszcze ustalenie kiedy poszczególne <strong>czujki</strong> zmieniły swój stan i określenie tej ostatniej. Dzięki temu będziemy wiedzieć, która czujka jako <strong>ostatnia</strong> wykryła ruch i jeśli jest to czujka w okolicach <strong>drzwi wejściowych</strong>, to będziemy mogli założyć, że weszliśmy, bądź wyszliśmy z domu (zakładając, że wchodzimy i wychodzimy tylko tymi drzwiami). Zrobimy to tym kodem:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua">    <span class="kd">local</span> <span class="n">PIR1_lastupdate</span> <span class="o">=</span> <span class="n">timedifference</span><span class="p">(</span><span class="n">otherdevices_lastupdate</span><span class="p">[</span><span class="n">PIR1</span><span class="p">])</span>
+    <span class="kd">local</span> <span class="n">PIR2_lastupdate</span> <span class="o">=</span> <span class="n">timedifference</span><span class="p">(</span><span class="n">otherdevices_lastupdate</span><span class="p">[</span><span class="n">PIR2</span><span class="p">])</span>
+    <span class="kd">local</span> <span class="n">PIR3_lastupdate</span> <span class="o">=</span> <span class="n">timedifference</span><span class="p">(</span><span class="n">otherdevices_lastupdate</span><span class="p">[</span><span class="n">PIR3</span><span class="p">])</span>
+    <span class="kd">local</span> <span class="n">PIR4_lastupdate</span> <span class="o">=</span> <span class="n">timedifference</span><span class="p">(</span><span class="n">otherdevices_lastupdate</span><span class="p">[</span><span class="n">PIR4</span><span class="p">])</span>
+    
+    <span class="c1">-- określenie, która czujka wykryła ruch jako ostatnia</span>
+    <span class="kd">local</span> <span class="n">last_PIR</span> <span class="o">=</span> <span class="n">PIR1_lastupdate</span>
+    <span class="kd">local</span> <span class="n">last_PIR_name</span> <span class="o">=</span> <span class="n">PIR1</span>
+    <span class="kr">if</span> <span class="n">PIR2_lastupdate</span> <span class="o">&lt;</span> <span class="n">last_PIR</span> <span class="kr">then</span>
+        <span class="n">last_PIR</span> <span class="o">=</span> <span class="n">PIR2_lastupdate</span>
+        <span class="n">last_PIR_name</span> <span class="o">=</span> <span class="n">PIR2</span>
+    <span class="kr">end</span>
+    <span class="kr">if</span> <span class="n">PIR3_lastupdate</span> <span class="o">&lt;</span> <span class="n">last_PIR</span> <span class="kr">then</span>
+        <span class="n">last_PIR</span> <span class="o">=</span> <span class="n">PIR3_lastupdate</span>
+        <span class="n">last_PIR_name</span> <span class="o">=</span> <span class="n">PIR3</span>
+    <span class="kr">end</span>
+    <span class="kr">if</span> <span class="n">PIR4_lastupdate</span> <span class="o">&lt;</span> <span class="n">last_PIR</span> <span class="kr">then</span>
+        <span class="n">last_PIR</span> <span class="o">=</span> <span class="n">PIR4_lastupdate</span>
+        <span class="n">last_PIR_name</span> <span class="o">=</span> <span class="n">PIR4</span>
+    <span class="kr">end</span></code></pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>W tym podejściu skupiamy się na wykrywaniu <strong>braku</strong> ruchu. Zauważ, że wszystkie te operacje i obliczenia najsensowniej jest wykonywać tylko wtedy, gdy nasz <em>dummy switch</em> jest w stanie <strong>On</strong>. Nie ma sensu robić tego także wtedy, gdy nie ma nikogo w domu. W tym celu wstawimy odpowiedniego <em>if&rsquo;a</em> w naszym docelowym skrypcie.</p>
+</blockquote>
+
+<h3 id="cały-skrypt">Cały skrypt&nbsp;<a class="anchor" href="#cały-skrypt"><i class="small linkify icon"></i></a> </h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">PIR1</span> <span class="o">=</span> <span class="s1">&#39;Korytarz&#39;</span>
+<span class="kd">local</span> <span class="n">PIR2</span> <span class="o">=</span> <span class="s1">&#39;Kuchnia&#39;</span>
+<span class="kd">local</span> <span class="n">PIR3</span> <span class="o">=</span> <span class="s1">&#39;Mały pokój&#39;</span>
+<span class="kd">local</span> <span class="n">PIR4</span> <span class="o">=</span> <span class="s1">&#39;Duży pokój&#39;</span>
+<span class="kd">local</span> <span class="n">switch_name</span> <span class="o">=</span> <span class="s1">&#39;Ludzie w domu&#39;</span>     <span class="c1">-- nasz dummy switch, który będziemy ustawiać</span>
+<span class="kd">local</span> <span class="n">no_motion_tresh</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">*</span><span class="mi">60</span>          <span class="c1">-- po tylu sekundach bezruchu nasza automatyka zadziała</span>
+
+<span class="n">commandArray</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<span class="kr">function</span> <span class="nf">timedifference</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+  <span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">timestamp</span><span class="p">:</span><span class="n">match</span><span class="p">(</span><span class="s2">&#34;(%d+)-(%d+)-(%d+) (%d+):(%d+):(%d+)&#34;</span><span class="p">)</span>
+  <span class="n">difference</span> <span class="o">=</span> <span class="n">os.difftime</span><span class="p">(</span><span class="n">os.time</span><span class="p">(),</span> <span class="n">os.time</span><span class="p">{</span><span class="n">year</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">hour</span><span class="o">=</span><span class="n">H</span><span class="p">,</span> <span class="n">min</span><span class="o">=</span><span class="n">M</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="n">S</span><span class="p">})</span>
+  <span class="kr">return</span> <span class="n">difference</span>
+<span class="kr">end</span>
+
+
+<span class="kr">if</span> <span class="p">(</span><span class="n">otherdevices</span><span class="p">[</span><span class="n">switch_name</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;On&#34;</span><span class="p">)</span> <span class="kr">then</span>
+    
+    <span class="kd">local</span> <span class="n">PIR1_lastupdate</span> <span class="o">=</span> <span class="n">timedifference</span><span class="p">(</span><span class="n">otherdevices_lastupdate</span><span class="p">[</span><span class="n">PIR1</span><span class="p">])</span>
+    <span class="kd">local</span> <span class="n">PIR2_lastupdate</span> <span class="o">=</span> <span class="n">timedifference</span><span class="p">(</span><span class="n">otherdevices_lastupdate</span><span class="p">[</span><span class="n">PIR2</span><span class="p">])</span>
+    <span class="kd">local</span> <span class="n">PIR3_lastupdate</span> <span class="o">=</span> <span class="n">timedifference</span><span class="p">(</span><span class="n">otherdevices_lastupdate</span><span class="p">[</span><span class="n">PIR3</span><span class="p">])</span>
+    <span class="kd">local</span> <span class="n">PIR4_lastupdate</span> <span class="o">=</span> <span class="n">timedifference</span><span class="p">(</span><span class="n">otherdevices_lastupdate</span><span class="p">[</span><span class="n">PIR4</span><span class="p">])</span>
+    
+    <span class="c1">-- określenie, która czujka wykryła ruch jako ostatnia</span>
+    <span class="kd">local</span> <span class="n">last_PIR</span> <span class="o">=</span> <span class="n">PIR1_lastupdate</span>
+    <span class="kd">local</span> <span class="n">last_PIR_name</span> <span class="o">=</span> <span class="n">PIR1</span>
+    <span class="kr">if</span> <span class="n">PIR2_lastupdate</span> <span class="o">&lt;</span> <span class="n">last_PIR</span> <span class="kr">then</span>
+        <span class="n">last_PIR</span> <span class="o">=</span> <span class="n">PIR2_lastupdate</span>
+        <span class="n">last_PIR_name</span> <span class="o">=</span> <span class="n">PIR2</span>
+    <span class="kr">end</span>
+    <span class="kr">if</span> <span class="n">PIR3_lastupdate</span> <span class="o">&lt;</span> <span class="n">last_PIR</span> <span class="kr">then</span>
+        <span class="n">last_PIR</span> <span class="o">=</span> <span class="n">PIR3_lastupdate</span>
+        <span class="n">last_PIR_name</span> <span class="o">=</span> <span class="n">PIR3</span>
+    <span class="kr">end</span>
+    <span class="kr">if</span> <span class="n">PIR4_lastupdate</span> <span class="o">&lt;</span> <span class="n">last_PIR</span> <span class="kr">then</span>
+        <span class="n">last_PIR</span> <span class="o">=</span> <span class="n">PIR4_lastupdate</span>
+        <span class="n">last_PIR_name</span> <span class="o">=</span> <span class="n">PIR4</span>
+    <span class="kr">end</span>
+    
+    <span class="c1">-- sprawdzanie, czy nie było ruchu przez określony czas</span>
+    <span class="kr">if</span> <span class="p">(</span><span class="n">last_PIR</span> <span class="o">&gt;</span> <span class="n">no_motion_tresh</span><span class="p">)</span> <span class="kr">then</span>
+        <span class="n">print</span><span class="p">(</span><span class="s1">&#39;Brak ruchu, ostatni PIR: &#39;</span> <span class="o">..</span> <span class="n">last_PIR_name</span> <span class="o">..</span> <span class="s2">&#34;, &#34;</span> <span class="o">..</span> <span class="n">last_PIR</span> <span class="o">..</span> <span class="s2">&#34; sek temu, próg: &#34;</span> <span class="o">..</span> <span class="n">no_motion_tresh</span><span class="p">)</span>
+        <span class="c1">--commandArray[&#39;SendNotification&#39;]=&#39;Brak ruchu#TEST&#39;</span>
+        
+        <span class="c1">-- sprawdzanie, czy ostatnią czujką była czujka w okolicy drzwi wejściowych i ustawianie switcha na Off</span>
+        <span class="kr">if</span> <span class="p">(</span><span class="n">last_PIR_name</span> <span class="o">==</span> <span class="n">PIR1</span><span class="p">)</span> <span class="kr">then</span>
+            <span class="n">commandArray</span><span class="p">[</span><span class="n">switch_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Off&#39;</span>
+            <span class="n">print</span><span class="p">(</span><span class="s1">&#39;Nie ma nikogo w mieszkaniu. Ludzie wyszli z domu&#39;</span><span class="p">)</span>
+            <span class="c1">--commandArray[&#39;SendNotification&#39;] = &#39;Nobody home#Nie ma nikogo w domu&#39;</span>
+        <span class="kr">end</span>
+    <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kr">return</span> <span class="n">commandArray</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="testy">Testy&nbsp;<a class="anchor" href="#testy"><i class="small linkify icon"></i></a> </h1>
+
+<p>Do testów proponuję tymczasowo ustawić jakieś względnie niski próg bezruchu. Możesz też włączyć wysyłanie <strong>powiadomień</strong> na swojego <em>Pushbullet&rsquo;a, Telegrama</em>, czy <em>Kodi</em> - wystarczy tylko <strong>odkomentować</strong> linie <code>commandArray['SendNotification']</code>. Lub po prostu obserwować <strong>logi</strong> :)</p>
+
+<h1 id="przykład-zastosowania">Przykład zastosowania&nbsp;<a class="anchor" href="#przykład-zastosowania"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="wyłączanie-lampki-gdy-nie-ma-ludzi-w-domu">Wyłączanie lampki, gdy nie ma ludzi w domu&nbsp;<a class="anchor" href="#wyłączanie-lampki-gdy-nie-ma-ludzi-w-domu"><i class="small linkify icon"></i></a> </h2>
+
+<p>Dodaj nowe zdarzenie wywoływane urządzeniem (Trigger <em>Device</em>) i wklep ten skrypt:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">Lampka</span> <span class="o">=</span> <span class="s1">&#39;Lampka&#39;</span>
+<span class="kd">local</span> <span class="n">Ludzie_w_domu</span> <span class="o">=</span> <span class="s1">&#39;Ludzie w domu&#39;</span>
+<span class="kd">local</span> <span class="n">Lampka_no_motion_tresh</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span><span class="mi">60</span>
+
+<span class="n">commandArray</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="kr">for</span> <span class="n">deviceName</span><span class="p">,</span><span class="n">deviceValue</span> <span class="kr">in</span> <span class="n">pairs</span><span class="p">(</span><span class="n">otherdevices</span><span class="p">)</span> <span class="kr">do</span>
+    <span class="kr">if</span> <span class="p">(</span><span class="n">deviceName</span> <span class="o">==</span> <span class="n">Ludzie_w_domu</span><span class="p">)</span> <span class="kr">then</span>
+        <span class="kr">if</span> <span class="p">(</span><span class="n">deviceValue</span> <span class="o">==</span> <span class="s2">&#34;Off&#34;</span><span class="p">)</span> <span class="kr">then</span>
+            <span class="kr">if</span> <span class="p">(</span><span class="n">otherdevices</span><span class="p">[</span><span class="n">Lampka</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;On&#34;</span><span class="p">)</span> <span class="kr">then</span>
+                <span class="n">print</span><span class="p">(</span><span class="n">Lampka</span> <span class="o">..</span> <span class="s2">&#34;, nowy stan = OFF, bo brak ruchu w domu od &#34;</span> <span class="o">..</span> <span class="n">Lampka_no_motion_tresh</span> <span class="o">..</span> <span class="s2">&#34; sekund&#34;</span><span class="p">)</span>
+                <span class="n">commandArray</span><span class="p">[</span><span class="n">Lampka</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;Off&#34;</span>
+                <span class="c1">--commandArray[&#39;SendNotification&#39;] = &#39;Milordzie#Wyłączyłem Twoją lampkę&#39;</span>
+            <span class="kr">end</span>
+        <span class="kr">end</span>
+    <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kr">return</span> <span class="n">commandArray</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="linki">Linki&nbsp;<a class="anchor" href="#linki"><i class="small linkify icon"></i></a> </h1>
+
+<ul>
+<li><a href="https://www.domoticz.com/wiki/LUA_commands">domoticz Lua wiki</a></li>
+<li><a href="https://www.domoticz.com/wiki/Events">podobny skrypt na domoticz wiki</a></li>
+</ul>
+
+<blockquote>
+<p><strong>ACHTUNG!</strong> Powyższa instrukcja służy wyłącznie celom edukacyjnym. Wszystko to robisz na własną odpowiedzialność, a autor nie bierze odpowiedzialności za szkody powstałe w wyniku nierozważnych działań.</p>
+</blockquote>
+
+				</article>				
+			</section>
+
+			
+			<section class="ui secondary attached segment dream-tags">
+				
+					
+
+
+
+
+	
+		<a class="ui label brown " href="/tags/domoticz" title="domoticz">domoticz</a>
+	
+		<a class="ui label olive " href="/tags/raspberry" title="raspberry">raspberry</a>
+	
+		<a class="ui label blue " href="/tags/lua" title="lua">lua</a>
+	
+		<a class="ui label pink " href="/tags/programowanie" title="programowanie">programowanie</a>
+	
+
+
+				
+			</section>
+
+			
+			
+				<section class="ui secondary  attached segment share row box">
+					
+
+
+
+
+
+
+
+
+<div class="author">
+	
+	<img class="avatar" src="/images/ja_awatar.png">
+	
+</div>
+<div class="info grow flexbox">
+	
+	<p class="name">majki</p>
+	
+	<p class="desc">Wszystko jest możliwe - niemożliwe potrzebuje tylko więcej czasu.</p>
+</div>
+
+
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Udostępnij</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Wykrywanie domowników  https:\/\/majki09.github.io\/posts\/brak-ruchu-w-domu\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section>
+
+				</section>
+			
+
+			
+			
+								
+				<section class="ui secondary attached segment copyright">
+					
+
+
+
+
+<div class="row box">
+	<a rel="license" class="license image none flexbox" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+		<img alt="Creative Commons License" src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" style="border-width: 0"></img>
+	</a>
+	<span class="license statement both flexbox">
+		Ten wpis jest na licencji
+		<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+	</span>
+</div>
+				</section>
+			
+
+			
+			
+				<div class="ui secondary bottom attached stacked segment disqus">
+					
+<div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = 'https:\/\/majki09.github.io\/posts\/brak-ruchu-w-domu\/';
+		this.page.identifier = 'af9ec6ad842a757f4c8502982ce1b3ff';
+	};
+	(function() {
+   	var d = document, s = d.createElement('script');
+   	s.src = 'https://' + 'majki-blog' + '.disqus.com/embed.js';
+   	s.setAttribute('data-timestamp', +new Date());
+   	(d.head || d.body).appendChild(s);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+				</div>
+			
+		</div>
+	</div>
+
+				</div>
+				<div class="back">
+					
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="O mnie kilka słów"></i>
+	</div>
+	
+		
+	
+		
+	
+
+	
+	
+	
+	
+	
+	
+	
+		
+		
+			<div class="item">
+				<a href="https://github.com/majki09" target="	_blank">
+					<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+			<div class="item">
+				<a href="https://www.stackoverflow.com/users/8344456/majki" target="	_blank">
+					<i id="ico" class="inverted big link stack overflow icon" title="Stack Overflow"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+</nav>
+
+
+
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments">
+			<div class="ui inverted segment">
+				<article class="twemoji">
+					<h1>Kim jestem?</h1>
+
+<p>Nazywam się Łukasz Majkut.</p>
+
+<p>Lubię elektronikę i większość co związana z komputerami, czyli od programowania, po obróbkę obrazu i wideo.</p>
+
+<p>Ciekawi mnie też <strong>fotografia</strong>, w sumie to od zawsze ciekawiła. Czy jestem <strong>fotografem</strong>? Jeśli fotograf, to osoba, która robi zdjęcia to tak, jestem fotografem 😄. Już niebawem na tym blogu powstaną wpisy na temat właśnie fotografii, będzie coś o podstawach, jak i obróbce zdjęć w <strong>Lightroomie</strong>.</p>
+
+<p>Od czterech lat pracuję jako inżynier <a href="https://en.wikipedia.org/wiki/In-circuit_test">ICT</a> w dużej firmie w Krakowie. Jest to praca polegająca na testowaniu <strong>elektroniki</strong>, ale są też elementy <strong>programowania</strong>. Praca jest bardzo specyficzna, a jedna fikstura do testów może zawierać <strong>5km</strong> kabli i ważyć <strong>45kg!</strong></p>
+
+<p>Zapraszam też do zwiedzenia mojego profilu na <strong>githubie</strong>, poprzez kliknięcie na ikonkę powyżej.</p>
+
+<p><h1>Blog</h1>
+Ten blog powstał ogólnie po to, żeby zebrać w całość niektóre z moich udanych pomysłów w jednym miejscu. Nie raz, żeby zrobić coś ciekawego musiałem przekopywać się przez tonę informacji nie tylko z Internetu. Mam nadzieję, że dzięki moim wpisom Ty już nie będziesz musiała / musiał tego robić  😄.</p>
+
+<p>Blog jest też takim moim portfolio, czymś, czym mogę się spokojnie pochwalić.</p>
+
+<!---
+commented out by majki
+I’m just another teenager who likes **writing**, **programming** and **making stuff**. Even setting the title as **Who Am I**  for this article is reminding me of `whoami` in Linux. I feel the inner urge to contribute something to the Internet because I love writing and I believe posting something online enables users all around the globe to see your work and suggest improvements.
+
+Recently I've also started taking interest in web designing and hosting the fruitful results of which these site and blogs are! I also make **projects** and share them online at **Instructables**, the link of which has been placed on the home page. Making stuff is just one of the things I love the most.
+
+That’s all that I can think of right now. Hopefully I’ll add something more to this later on. 😅
+
+Curious about me? Use the social links above to check out my profiles.
+
+You can also support me on <a href="https://patreon.com/UtkarshVerma" target="_blank">Patreon</a>. I'd really appreciate it.
+-->
+
+				</article>
+			</div>
+		</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+	
+	
+		<script id="dsq-count-scr" src="//majki-blog.disqus.com/count.js" async></script>
+	
+
+		
+
+<script src="/js/site.js"></script>
+
+
+
+	<script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.6"></script>
+
+
+
+
+
+
+
+
+
+		
+
+
+		
+
+	<script>
+		(function () {
+		  console.log("Twemoji up and making stuff colourful!");
+		  for (var b = document.getElementsByClassName("twemoji"), a = 0; a < b.length; a++) {
+			twemoji.parse(b[a]);
+		  }
+		})();
+	</script>
+
+
+	</body>
+</html>

@@ -344,7 +344,7 @@ ul > li {
   border-left: 8px solid #ccc;
   border-radius: 10px;
   padding: 0.4em 0.8em;
-  margin: 0.5em 0 0.5em 0;
+  margin: 2em 0 2em 0;
   padding-left: 8em;
   background-image: url(../images/exclamation-mark.png);
   background-position: left;
@@ -378,6 +378,7 @@ ul > li {
   position: relative;
   max-width: 80%;
   display: block;
+  margin-bottom: 3em;
 }
 
 p > img:not(.emoji), li > img {
@@ -423,7 +424,7 @@ p > img:not(.emoji), li > img {
 }
 .highlight {
   border-radius: 20px;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   margin-top: 1rem;
   border: 1px solid #8a8a8a6b;
 }
