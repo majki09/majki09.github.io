@@ -16,12 +16,12 @@
       <pubDate>Thu, 07 Mar 2019 10:29:23 +0530</pubDate>
       
       <guid>https://majki09.github.io/posts/rc5/</guid>
-      <description>Pan Pilot - czyli wstęp Piloty na podczerwień powstały już bardzo dawno temu. Niektórzy pamiętają ten wynalazek jako coś, czym się włącza TV, wieżę, czy klimę. Ja pamiętam czasy, kiedy biegałem do telewizyjnego pudła, żeby zmienić kanał (były aż 3) albo podgłośnić czy ściszyć, no bo pilotów my jeszcze wtedy nie mieli. Takie czasy byli&amp;hellip; A dzisiaj? Pykniemy sobie sterowanie maliną takim właśnie wiekowym wynalazkiem. Zapraszam :)
- Zanim ruszymy dalej upewnijmy się, że:</description>
+      <description>UWAGA ! Ten poradnik dotyczy pakietu lirc i wersji kernela, które go obsługują. W nowszych (od release 4.19.y w górę) lirc zastąpiony jest pakietem gpio-ir, który jesto obsługiwany zupełnie inaczej. Więcej info na dole strony dole strony.
+ Pan Pilot - czyli wstęp Piloty na podczerwień powstały już bardzo dawno temu. Niektórzy pamiętają ten wynalazek jako coś, czym się włącza TV, wieżę, czy klimę. Ja pamiętam czasy, kiedy biegałem do telewizyjnego pudła, żeby zmienić kanał (były aż 3) albo podgłośnić czy ściszyć, no bo pilotów my jeszcze wtedy nie mieli.</description>
     </item>
     
     <item>
-      <title>Wykrywanie domowników</title>
+      <title>Wykrywanie domowników w Domoticz</title>
       <link>https://majki09.github.io/posts/brak-ruchu-w-domu/</link>
       <pubDate>Mon, 13 May 2019 23:03:43 +0200</pubDate>
       
