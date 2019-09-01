@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<title>
+	Tag | esp8266
+</title>
+		<style>
+	body {
+		display: block;
+		--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		
+	}
+
+	body, body.pushable {
+		background-repeat: no-repeat;
+	  	background-attachment: fixed;
+	  	background-size: cover !important;
+	}
+</style>
+
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+	
+	<meta name="author" content="majki" />
+	<meta name="description" content="" />
+
+
+
+<meta name="generator" content="Hugo 0.54.0" />
+
+
+<link rel="shortcut icon" href="/img/defaultFav.ico">
+
+
+
+    <link rel="alternate" type="application/rss+xml" href="https://majki09.github.io/tags/esp8266/index.xml" title="majki-blog" />
+
+
+		
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script
+	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+
+ <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Inconsolata" rel="stylesheet"> 
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/site.css">
+
+
+
+
+
+
+	
+		<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/UtkarshVerma/hugo-dream-plus/ae11561d/exampleSite/static/css/highlight.css">
+	
+
+
+
+<style>
+	body.pushable {
+		display: block;
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		 ;
+	}
+</style>
+
+
+
+<script>
+	var colorBG =  true 
+	
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+
+	</head>
+
+	<body>
+		<script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+
+
+
+
+
+
+	var gradients = [
+	  [],
+	  ['#40e0d0', '#ff8c00', '#ff0080'], 
+	  ['#3e5151', '#decba4'], 
+	  ['#11998e', '#38ef7d'], 
+	  ['#108dc7', '#ef8e38'], 
+	  ['#fc5c7d', '#6a82fb'], 
+	  ['#fc466b', '#3f5efb'], 
+	  ['#c94b4b', '#4b134f'], 
+	  ['#23074d', '#cc5333'] 
+	];
+	document.body.style.setProperty('--colorBG', connect(gradients[getRandomInt(0, gradients.length)]));
+
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  var random;
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min;
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random;
+	      break;
+	    }
+	  }
+	  return random;
+	}
+
+	function connect(arr) {
+	  var str = '';
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', ';
+	    } else {
+	      str += arr[i];
+	    }
+	  }
+	  return str;
+	}
+</script>
+
+
+
+
+		<div id="sidebar" class="ui sidebar inverted vertical menu">
+	
+	<section id="author" class="ui top attached center aligned inverted segment">
+		
+<div class="ui small circular image">
+	
+		<img src="/images/ja_awatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	majki
+	<div class="sub header">Wszystko jest możliwe - niemożliwe potrzebuje tylko więcej czasu.</div>
+</h3>
+
+	</section>
+
+	
+	
+		<section class="ui attached center aligned inverted segment sidebar-dream-tags">
+			
+			
+			
+			
+
+
+
+
+	
+	
+		
+			
+			<a class="ui label teal " href="/tags/domoticz" title="domoticz">domoticz</a>
+		
+			
+			<a class="ui label olive " href="/tags/programowanie" title="programowanie">programowanie</a>
+		
+			
+			<a class="ui label violet " href="/tags/raspberry" title="raspberry">raspberry</a>
+		
+			
+			<a class="ui label orange " href="/tags/atmelstudio" title="atmelstudio">atmelstudio</a>
+		
+			
+			<a class="ui label blue " href="/tags/avr" title="avr">avr</a>
+		
+			
+			<a class="ui label red " href="/tags/avrdude" title="avrdude">avrdude</a>
+		
+			
+			<a class="ui label pink " href="/tags/esp8266" title="esp8266">esp8266</a>
+		
+			
+			<a class="ui label red " href="/tags/linux" title="linux">linux</a>
+		
+	
+
+
+		</section>
+	
+
+	
+	
+		<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+			<div class="ui inverted accordion">
+				
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/avr">avr</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/atmelstudio_usbasp/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>USBasp w AtmelStudio</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/domoticz">domoticz</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/gniazdko_smartdgm/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Gniazdko SmartDGM</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://majki09.github.io/posts/brak-ruchu-w-domu/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Wykrywanie domowników w Domoticz</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/raspberry">raspberry</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/rc5/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Raspberry Pi na pilota</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+			</div>
+		</section>
+	
+
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+		
+
+	<p>© 2019 majki-blog</p>
+
+
+<p>Zasilane przez <a href="https://gohugo.io/" target="_blank">Hugo</a> z motywem <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus.</a></p>
+
+	</section>
+</div>
+
+
+		<div class="pusher">
+			<div class="flipper">
+				<div class="front">
+					
+	
+		
+	<nav class="ui top secondary menu bar">
+	
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="O mnie kilka słów"></i>
+	</div>
+
+	
+	
+		<div class="item">
+			<a href="/">
+				<i class="inverted big link home icon" title="Główna strona"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		<div class="item">
+			<a href="/posts">
+				<i class="inverted big link archive icon" title="Archiwum"></i>
+			</a>
+		</div>
+	
+
+	
+	
+
+	
+	
+		<div class="item">
+			<a href="/categories">
+				<i class="inverted big link cubes icon" title="Wszystkie kategorie"></i>
+			</a>
+    	</div>
+	
+
+	
+	
+
+	
+	
+
+	
+	
+		<div class="item right">
+			<a href="/posts/index.xml">
+				<i class="inverted big link rss icon" title="RSS"></i>
+			</a>
+		</div>
+	
+</nav>
+
+	
+	<div class="ui centered grid">
+		<div class="fifteen wide mobile fifteen wide tablet four wide computer column">
+			<div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">		
+		
+		<header id="author" class="ui top attached center aligned inverted segment">
+			
+<div class="ui small circular image">
+	
+		<img src="/images/ja_awatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	majki
+	<div class="sub header">Wszystko jest możliwe - niemożliwe potrzebuje tylko więcej czasu.</div>
+</h3>
+
+		</header>
+
+		
+		<div class="active title header-title">
+			
+				<div id="tag-category-pop" class="ui red right corner label">
+					<i class="hand point icon up" title="Pokaż/ukryj tagi i kategorie"></i>
+				</div>
+			
+		</div>
+		
+		
+		<div id="tag-category" class="active content">
+			
+				<section class="ui attached center aligned inverted segment dream-tags none flexbox">
+					
+					
+					
+
+
+
+
+	
+	
+		
+			
+			<a class="ui label olive " href="/tags/domoticz" title="domoticz">domoticz</a>
+		
+			
+			<a class="ui label olive " href="/tags/programowanie" title="programowanie">programowanie</a>
+		
+			
+			<a class="ui label blue " href="/tags/raspberry" title="raspberry">raspberry</a>
+		
+			
+			<a class="ui label violet " href="/tags/atmelstudio" title="atmelstudio">atmelstudio</a>
+		
+			
+			<a class="ui label pink " href="/tags/avr" title="avr">avr</a>
+		
+			
+			<a class="ui label violet " href="/tags/avrdude" title="avrdude">avrdude</a>
+		
+			
+			<a class="ui label violet " href="/tags/esp8266" title="esp8266">esp8266</a>
+		
+			
+			<a class="ui label olive " href="/tags/linux" title="linux">linux</a>
+		
+	
+
+
+				</section>
+			
+
+			
+				<section class="ui attached inverted segment dream-categories both flexbox">
+					<div class="inverted accordion">
+						
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/avr">avr</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/atmelstudio_usbasp/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>USBasp w AtmelStudio</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/domoticz">domoticz</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/gniazdko_smartdgm/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Gniazdko SmartDGM</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://majki09.github.io/posts/brak-ruchu-w-domu/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Wykrywanie domowników w Domoticz</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/raspberry">raspberry</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/rc5/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Raspberry Pi na pilota</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+					</div>
+				</section>
+			
+		</div>
+
+		
+		<footer class="ui bottom attached center aligned inverted segment">
+			
+
+	<p>© 2019 majki-blog</p>
+
+
+<p>Zasilane przez <a href="https://gohugo.io/" target="_blank">Hugo</a> z motywem <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus.</a></p>
+
+		</footer>
+	</div>
+</div>
+
+		</div>
+		
+		<div class="fifteen wide mobile fifteen wide tablet eleven wide computer column post-list">
+			<div class="cards row box">
+				
+					
+
+
+	
+
+
+
+<article class="blog-card none flexbox">
+	
+	<img class="image" src="/images/smartDGM/smartDGM_socket.jpg"></img>
+	<div class="title-content twemoji">
+		<h3><a class="title" href=https://majki09.github.io/posts/gniazdko_smartdgm/>Gniazdko SmartDGM</a></h3>
+		<div class="intro twemoji">
+			
+				Smart gniazdko SmartDGM i wgrywanie Tasmota
+			
+		</div>
+	</div>
+
+	
+	<div class="utility-info">
+		<ul class="utility-list">
+			
+				<div><i class="comment icon"></i><span class="disqus-comment-count" data-disqus-identifier="36310a20cb664ba6ed0e2ccac0d2a4ed"></span></div>
+			
+			<div><span><i class="calendar icon"></i>1.09.2019</span></div>
+			<div><span><i class="clock icon"></i>8 min czytania</span></div>
+		</ul>
+	</div>
+	<div class="color-overlay"></div>
+</article>
+
+				
+			</div>
+		</div>
+	</div>
+
+				</div>
+				<div class="back">
+					
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="O mnie kilka słów"></i>
+	</div>
+	
+		
+	
+		
+	
+
+	
+	
+	
+	
+	
+	
+	
+		
+		
+			<div class="item">
+				<a href="https://github.com/majki09" target="	_blank">
+					<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+			<div class="item">
+				<a href="https://www.stackoverflow.com/users/8344456/majki" target="	_blank">
+					<i id="ico" class="inverted big link stack overflow icon" title="Stack Overflow"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+</nav>
+
+
+
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments">
+			<div class="ui inverted segment">
+				<article class="twemoji">
+					<h1>Kim jestem?</h1>
+
+<p>Nazywam się Łukasz Majkut.</p>
+
+<p>Lubię elektronikę i większość co związana z komputerami, czyli od programowania, po obróbkę obrazu i wideo.</p>
+
+<p>Ciekawi mnie też <strong>fotografia</strong>, w sumie to od zawsze ciekawiła. Czy jestem <strong>fotografem</strong>? Jeśli fotograf, to osoba, która robi zdjęcia to tak, jestem fotografem 😄. Już niebawem na tym blogu powstaną wpisy na temat właśnie fotografii, będzie coś o podstawach, jak i obróbce zdjęć w <strong>Lightroomie</strong>.</p>
+
+<p>Od czterech lat pracuję jako inżynier <a href="https://en.wikipedia.org/wiki/In-circuit_test">ICT</a> w dużej firmie w Krakowie. Jest to praca polegająca na testowaniu <strong>elektroniki</strong>, ale są też elementy <strong>programowania</strong>. Praca jest bardzo specyficzna, a jedna fikstura do testów może zawierać <strong>5km</strong> kabli i ważyć <strong>45kg!</strong></p>
+
+<p>Zapraszam też do zwiedzenia mojego profilu na <strong>githubie</strong>, poprzez kliknięcie na ikonkę powyżej.</p>
+
+<p><h1>Blog</h1>
+Ten blog powstał ogólnie po to, żeby zebrać w całość niektóre z moich udanych pomysłów w jednym miejscu. Nie raz, żeby zrobić coś ciekawego musiałem przekopywać się przez tonę informacji nie tylko z Internetu. Mam nadzieję, że dzięki moim wpisom Ty już nie będziesz musiała / musiał tego robić  😄.</p>
+
+<p>Blog jest też takim moim portfolio, czymś, czym mogę się spokojnie pochwalić.</p>
+
+<!---
+commented out by majki
+I’m just another teenager who likes **writing**, **programming** and **making stuff**. Even setting the title as **Who Am I**  for this article is reminding me of `whoami` in Linux. I feel the inner urge to contribute something to the Internet because I love writing and I believe posting something online enables users all around the globe to see your work and suggest improvements.
+
+Recently I've also started taking interest in web designing and hosting the fruitful results of which these site and blogs are! I also make **projects** and share them online at **Instructables**, the link of which has been placed on the home page. Making stuff is just one of the things I love the most.
+
+That’s all that I can think of right now. Hopefully I’ll add something more to this later on. 😅
+
+Curious about me? Use the social links above to check out my profiles.
+
+You can also support me on <a href="https://patreon.com/UtkarshVerma" target="_blank">Patreon</a>. I'd really appreciate it.
+-->
+
+				</article>
+			</div>
+		</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+	
+	
+		
+			<script id="dsq-count-scr" src="//majki-blog.disqus.com/count.js" async></script>
+		
+	
+
+		
+
+<script src="/js/site.js"></script>
+
+
+
+	<script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.6"></script>
+
+
+
+
+
+
+
+
+
+		
+
+
+		
+
+	<script>
+		(function () {
+		  console.log("Twemoji up and making stuff colourful!");
+		  for (var b = document.getElementsByClassName("twemoji"), a = 0; a < b.length; a++) {
+			twemoji.parse(b[a]);
+		  }
+		})();
+	</script>
+
+
+	</body>
+</html>

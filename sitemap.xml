@@ -3,13 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://majki09.github.io/posts/gniazdko_smartdgm/</loc>
+    <lastmod>2019-09-01T21:29:23+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://majki09.github.io/posts/rc5/</loc>
-    <lastmod>2019-05-13T23:16:26+02:00</lastmod>
+    <lastmod>2019-06-02T12:58:05+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://majki09.github.io/posts/brak-ruchu-w-domu/</loc>
-    <lastmod>2019-05-13T23:16:26+02:00</lastmod>
+    <lastmod>2019-06-02T12:58:05+02:00</lastmod>
   </url>
   
   <url>
@@ -32,13 +37,13 @@
   </url>
   
   <url>
-    <loc>https://majki09.github.io/categories/avr/</loc>
+    <loc>https://majki09.github.io/tags/avr/</loc>
     <lastmod>2019-05-13T23:16:26+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://majki09.github.io/tags/avr/</loc>
+    <loc>https://majki09.github.io/categories/avr/</loc>
     <lastmod>2019-05-13T23:16:26+02:00</lastmod>
     <priority>0</priority>
   </url>
@@ -56,56 +61,74 @@
   </url>
   
   <url>
-    <loc>https://majki09.github.io/categories/domoticz/</loc>
-    <lastmod>2019-05-13T23:16:26+02:00</lastmod>
+    <loc>https://majki09.github.io/tags/domoticz/</loc>
+    <lastmod>2019-09-01T21:29:23+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://majki09.github.io/tags/domoticz/</loc>
-    <lastmod>2019-05-13T23:16:26+02:00</lastmod>
+    <loc>https://majki09.github.io/categories/domoticz/</loc>
+    <lastmod>2019-09-01T21:29:23+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://majki09.github.io/tags/esp8266/</loc>
+    <lastmod>2019-09-01T21:29:23+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://majki09.github.io/tags/linux/</loc>
+    <lastmod>2019-09-01T21:29:23+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://majki09.github.io/tags/lua/</loc>
-    <lastmod>2019-05-13T23:16:26+02:00</lastmod>
+    <lastmod>2019-06-02T12:58:05+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://majki09.github.io/tags/pilot/</loc>
-    <lastmod>2019-05-13T23:16:26+02:00</lastmod>
+    <lastmod>2019-06-02T12:58:05+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://majki09.github.io/posts/</loc>
-    <lastmod>2019-05-13T23:16:26+02:00</lastmod>
+    <lastmod>2019-09-01T21:29:23+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://majki09.github.io/tags/programowanie/</loc>
-    <lastmod>2019-05-13T23:16:26+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://majki09.github.io/categories/raspberry/</loc>
-    <lastmod>2019-05-13T23:16:26+02:00</lastmod>
+    <lastmod>2019-06-02T12:58:05+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://majki09.github.io/tags/raspberry/</loc>
-    <lastmod>2019-05-13T23:16:26+02:00</lastmod>
+    <lastmod>2019-09-01T21:29:23+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://majki09.github.io/categories/raspberry/</loc>
+    <lastmod>2019-06-02T12:58:05+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://majki09.github.io/tags/</loc>
     <lastmod>2019-05-13T23:16:26+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://majki09.github.io/tags/tasmota/</loc>
+    <lastmod>2019-09-01T21:29:23+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -117,7 +140,7 @@
   
   <url>
     <loc>https://majki09.github.io/</loc>
-    <lastmod>2019-05-13T23:16:26+02:00</lastmod>
+    <lastmod>2019-09-01T21:29:23+05:30</lastmod>
     <priority>0</priority>
   </url>
   

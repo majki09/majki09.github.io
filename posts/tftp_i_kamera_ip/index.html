@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<title>
+	Robótki z Linuxem w kamerce IP
+</title>
+		<style>
+	body {
+		display: block;
+		--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		
+	}
+
+	body, body.pushable {
+		background-repeat: no-repeat;
+	  	background-attachment: fixed;
+	  	background-size: cover !important;
+	}
+</style>
+
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+	
+	
+	
+	<meta name="author" content="majki" />
+	<meta name="description" content="Obsługa pilota IR w Raspberry Pi" />
+
+
+
+<meta name="generator" content="Hugo 0.54.0" />
+
+
+<link rel="shortcut icon" href="/img/defaultFav.ico">
+
+
+
+
+		
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script
+	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+
+ <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Inconsolata" rel="stylesheet"> 
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/site.css">
+
+
+
+
+
+
+	
+		<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/UtkarshVerma/hugo-dream-plus/ae11561d/exampleSite/static/css/highlight.css">
+	
+
+
+
+<style>
+	body.pushable {
+		display: block;
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		 ;
+	}
+</style>
+
+
+
+<script>
+	var colorBG =  true 
+	
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+
+	</head>
+
+	<body>
+		<script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+
+
+
+
+
+
+	var gradients = [
+	  [],
+	  ['#40e0d0', '#ff8c00', '#ff0080'], 
+	  ['#3e5151', '#decba4'], 
+	  ['#11998e', '#38ef7d'], 
+	  ['#108dc7', '#ef8e38'], 
+	  ['#fc5c7d', '#6a82fb'], 
+	  ['#fc466b', '#3f5efb'], 
+	  ['#c94b4b', '#4b134f'], 
+	  ['#23074d', '#cc5333'] 
+	];
+	document.body.style.setProperty('--colorBG', connect(gradients[getRandomInt(0, gradients.length)]));
+
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  var random;
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min;
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random;
+	      break;
+	    }
+	  }
+	  return random;
+	}
+
+	function connect(arr) {
+	  var str = '';
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', ';
+	    } else {
+	      str += arr[i];
+	    }
+	  }
+	  return str;
+	}
+</script>
+
+
+
+
+		<div id="sidebar" class="ui sidebar inverted vertical menu">
+	
+	<section id="author" class="ui top attached center aligned inverted segment">
+		
+<div class="ui small circular image">
+	
+		<img src="/images/ja_awatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	majki
+	<div class="sub header">Wszystko jest możliwe - niemożliwe potrzebuje tylko więcej czasu.</div>
+</h3>
+
+	</section>
+
+	
+	
+		<section class="ui attached center aligned inverted segment sidebar-dream-tags">
+			
+			
+			
+			
+
+
+
+
+	
+	
+		
+			
+			<a class="ui label purple " href="/tags/raspberry" title="raspberry">raspberry</a>
+		
+			
+			<a class="ui label violet " href="/tags/domoticz" title="domoticz">domoticz</a>
+		
+			
+			<a class="ui label yellow " href="/tags/programowanie" title="programowanie">programowanie</a>
+		
+			
+			<a class="ui label blue " href="/tags/atmelstudio" title="atmelstudio">atmelstudio</a>
+		
+			
+			<a class="ui label blue " href="/tags/avr" title="avr">avr</a>
+		
+			
+			<a class="ui label teal " href="/tags/avrdude" title="avrdude">avrdude</a>
+		
+			
+			<a class="ui label pink " href="/tags/google-code-in" title="google-code-in">google-code-in</a>
+		
+			
+			<a class="ui label purple " href="/tags/iot" title="iot">iot</a>
+		
+	
+
+
+		</section>
+	
+
+	
+	
+		<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+			<div class="ui inverted accordion">
+				
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/avr">avr</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/atmelstudio_usbasp/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>USBasp w AtmelStudio</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/blogging">blogging</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/gci/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Google Code-in with OpenWISP</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/domoticz">domoticz</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/nawilzacz-iot/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Nawilżacz IoT</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://majki09.github.io/posts/brak-ruchu-w-domu/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Wykrywanie domowników w Domoticz</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/linux">linux</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/tftp_i_kamera_ip/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Robótki z Linuxem w kamerce IP</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/raspberry">raspberry</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/rc5/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Raspberry Pi na pilota</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/tutorials">tutorials</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/creating-a-new-theme/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Creating a New Theme</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+			</div>
+		</section>
+	
+
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+		
+
+	<p>© 2019 majki-blog</p>
+
+
+<p>Zasilane przez <a href="https://gohugo.io/" target="_blank">Hugo</a> z motywem <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus.</a></p>
+
+	</section>
+</div>
+
+
+		<div class="pusher">
+			<div class="flipper">
+				<div class="front">
+					
+	<nav class="ui top secondary menu bar">
+	
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="O mnie kilka słów"></i>
+	</div>
+
+	
+	
+		<div class="item">
+			<a href="/">
+				<i class="inverted big link home icon" title="Główna strona"></i>
+			</a>
+		</div>
+	
+
+	
+	
+
+	
+	
+		<div class="item">
+			<a href="/tags">
+				<i class="inverted big link tags icon" title="Wszystkie tagi"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		<div class="item">
+			<a href="/categories">
+				<i class="inverted big link cubes icon" title="Wszystkie kategorie"></i>
+			</a>
+    	</div>
+	
+
+	
+	
+
+	
+	
+		<div class="ui container tablet computer only grid">
+			<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+				<i class="inverted big link sidebar icon" title="Pokazuj boczny pasek"></i>
+			</div>
+		</div>
+	
+
+	
+	
+		<div class="item right">
+			<a href="/posts/index.xml">
+				<i class="inverted big link rss icon" title="RSS"></i>
+			</a>
+		</div>
+	
+</nav>
+
+
+	<div class="ui centered grid">
+		
+		<div class="sixteen wide mobile only column">
+				<div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">		
+		
+		<header id="author" class="ui top attached center aligned inverted segment">
+			
+<div class="ui small circular image">
+	
+		<img src="/images/ja_awatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	majki
+	<div class="sub header">Wszystko jest możliwe - niemożliwe potrzebuje tylko więcej czasu.</div>
+</h3>
+
+		</header>
+
+		
+		<div class=" title header-title">
+			
+				<div id="tag-category-pop" class="ui red right corner label">
+					<i class="hand point icon down" title="Pokaż/ukryj tagi i kategorie"></i>
+				</div>
+			
+		</div>
+		
+		
+		<div id="tag-category" class=" content">
+			
+				<section class="ui attached center aligned inverted segment dream-tags none flexbox">
+					
+					
+					
+
+
+
+
+	
+	
+		
+			
+			<a class="ui label red " href="/tags/raspberry" title="raspberry">raspberry</a>
+		
+			
+			<a class="ui label orange " href="/tags/domoticz" title="domoticz">domoticz</a>
+		
+			
+			<a class="ui label green " href="/tags/programowanie" title="programowanie">programowanie</a>
+		
+			
+			<a class="ui label green " href="/tags/atmelstudio" title="atmelstudio">atmelstudio</a>
+		
+			
+			<a class="ui label brown " href="/tags/avr" title="avr">avr</a>
+		
+			
+			<a class="ui label purple " href="/tags/avrdude" title="avrdude">avrdude</a>
+		
+			
+			<a class="ui label purple " href="/tags/google-code-in" title="google-code-in">google-code-in</a>
+		
+			
+			<a class="ui label olive " href="/tags/iot" title="iot">iot</a>
+		
+	
+
+
+				</section>
+			
+
+			
+				<section class="ui attached inverted segment dream-categories both flexbox">
+					<div class="inverted accordion">
+						
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/avr">avr</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/atmelstudio_usbasp/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>USBasp w AtmelStudio</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/blogging">blogging</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/gci/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Google Code-in with OpenWISP</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/domoticz">domoticz</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/nawilzacz-iot/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Nawilżacz IoT</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://majki09.github.io/posts/brak-ruchu-w-domu/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Wykrywanie domowników w Domoticz</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/linux">linux</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/tftp_i_kamera_ip/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Robótki z Linuxem w kamerce IP</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/raspberry">raspberry</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/rc5/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Raspberry Pi na pilota</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/tutorials">tutorials</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/creating-a-new-theme/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Creating a New Theme</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+					</div>
+				</section>
+			
+		</div>
+
+		
+		<footer class="ui bottom attached center aligned inverted segment">
+			
+
+	<p>© 2019 majki-blog</p>
+
+
+<p>Zasilane przez <a href="https://gohugo.io/" target="_blank">Hugo</a> z motywem <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus.</a></p>
+
+		</footer>
+	</div>
+</div>
+
+		</div>
+
+		<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+			
+			<section class="ui secondary top attached black segment post-head">
+				<h1 class="post-title">
+					Robótki z Linuxem w kamerce IP
+				</h1>
+
+				<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>13.07.2019</span></div>
+					
+					<div><span class="disqusComment"><i class="comment outline icon"></i><a href="https://majki09.github.io/posts/tftp_i_kamera_ip/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="f67432bc8ceb7c1c679c444af271d80b"></a></span></div>
+					<div><span><i class="clock outline icon"></i>8 min czytania</span></div>
+					<div><span><i class="angle double up icon"></i>Ostatnia zmiana 13.07.2019</span></div>
+				</div>
+				<hr>
+
+				
+					<div class="toc">
+						<nav id="TableOfContents">
+<ul>
+<li><a href="#pan-pilot-czyli-wstęp">Pan Pilot - czyli wstęp</a></li>
+<li><a href="#czego-potrzebujesz">Czego potrzebujesz</a></li>
+<li><a href="#instalacja">Instalacja</a>
+<ul>
+<li><a href="#hardware">Hardware</a></li>
+<li><a href="#instalujemy-tftp-server">Instalujemy TFTP Server</a></li>
+</ul></li>
+<li><a href="#konfiguracja">Konfiguracja</a></li>
+<li><a href="#testy">Testy</a></li>
+<li><a href="#bonus">Bonus</a>
+<ul>
+<li><a href="#modyfikacja-pliku-lircrc">Modyfikacja pliku <code>lircrc</code></a></li>
+<li><a href="#linki">Linki</a></li>
+<li><a href="#obsługa-z-nowymi-kernelami">Obsługa z nowymi kernelami</a></li>
+</ul></li>
+</ul>
+</nav>
+					</div>
+				
+
+				<article class="post-content twemoji">
+					
+
+<blockquote>
+<p><strong>UWAGA !</strong>
+Ten poradnik dotyczy pakietu <em>lirc</em> i wersji kernela, które go obsługują. W nowszych (od release <strong>4.19.y</strong> w górę) <em>lirc</em> zastąpiony jest pakietem <em>gpio-ir</em>, który jesto obsługiwany zupełnie inaczej. Więcej info na dole strony <a href="#obsługa-z-nowymi-kernelami">dole strony</a>.</p>
+</blockquote>
+
+<h1 id="pan-pilot-czyli-wstęp">Pan Pilot - czyli wstęp&nbsp;<a class="anchor" href="#pan-pilot-czyli-wstęp"><i class="small linkify icon"></i></a> </h1>
+
+<p><strong>Piloty na podczerwień</strong> powstały już bardzo dawno temu. Niektórzy pamiętają ten wynalazek jako coś, czym się włącza TV, wieżę, czy klimę. Ja pamiętam czasy, kiedy biegałem do telewizyjnego pudła, żeby zmienić kanał (były aż 3) albo podgłośnić czy ściszyć, no bo pilotów my jeszcze wtedy nie mieli. Takie czasy byli&hellip; A dzisiaj? Pykniemy sobie sterowanie maliną takim właśnie wiekowym wynalazkiem. Zapraszam :)</p>
+
+<blockquote>
+<p>Zanim ruszymy dalej upewnijmy się, że:</p>
+
+<ul>
+<li>znasz podstawy elektroniki,</li>
+<li>wiesz, co to jest GPIO,</li>
+<li>znasz podstawowe komendy Linux&rsquo;a i umiesz edytować pliki,</li>
+<li>masz sprawne baterie w pilocie :)</li>
+</ul>
+</blockquote>
+
+<h1 id="czego-potrzebujesz">Czego potrzebujesz&nbsp;<a class="anchor" href="#czego-potrzebujesz"><i class="small linkify icon"></i></a> </h1>
+
+<ul>
+<li>RaspberryPi z <strong>Raspbianem</strong>,</li>
+<li>odbiornik IR, np <strong>AT138B</strong>, <strong>TSOP32236</strong> lub podobne,</li>
+<li>kondensator elektrolityczny <strong>47uF</strong> (najlepiej w obudowie do montażu przewlekanego),</li>
+<li>dowolny pilot zgodny z kodowaniem <strong>RC-5</strong> (u mnie to poczciwy pilot Cyfry+).</li>
+</ul>
+
+<h1 id="instalacja">Instalacja&nbsp;<a class="anchor" href="#instalacja"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="hardware">Hardware&nbsp;<a class="anchor" href="#hardware"><i class="small linkify icon"></i></a> </h2>
+
+<p>W tym poradniku za przykład użyjemy sobie odbiornika <strong>AT138B</strong>. Inne odbiorniki wyglądają i działają analogicznie.<br />
+Pinout:
+<img src="/images/at138b_pinout.jpg" alt="pinout" title="Pinout dla AT138B" /></p>
+
+<p>Podłączamy odbiornik do naszej Raspberry (na schemacie <em>uC</em>) analogicznie do schematu:</p>
+
+<p><img src="/images/TFTP_server.png" alt="text" title="Przykładowy schemat podłączenia AT138B" /></p>
+
+<p>gdzie:</p>
+
+<ul>
+<li>1 - OUT,</li>
+<li>2 - GND,</li>
+<li>3 - VS.</li>
+</ul>
+
+<blockquote>
+<p><strong>UWAGA!</strong> Bardzo ważne jest to, żeby nie zignorować <strong>kondensatora</strong> między pinami <strong>3</strong>, a <strong>2</strong>! Kondensator umieszcza się po to, by &ldquo;odszumić&rdquo; linię zasilającą odbiornik. W przeciwnym razie <strong>nie będziesz w stanie</strong> poprawnie odczytać kodu wciśniętego na pilocie klawisza, a <em>irw</em> (o tym potem) zasypie Ci konsolę <strong>krzakami</strong>. W ramach eksperymentu, po skończonym projekcie uruchom <em>irw</em> i wypnij kondensator z układu, żeby przekonać się, o czym mowa.</p>
+</blockquote>
+
+<h2 id="instalujemy-tftp-server">Instalujemy TFTP Server&nbsp;<a class="anchor" href="#instalujemy-tftp-server"><i class="small linkify icon"></i></a> </h2>
+
+<ol>
+<li><p>Instalujemy paczki <em>apt-get&rsquo;em</em>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">sudo apt-get install lirc liblircclient-dev
+sudo apt-get install python-lirc</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>Dopisujemy <em>lirc</em> do modułów systemu, czyli plik <code>/etc/modules</code> (w nowszych dystrybucjach Raspbiana, od Wheezy w górę <em>lirc</em> jest już wpisany, należałoby jednak to sprawdzić - instrukcja taka sama, jak niżej):</p>
+
+<pre><code>lirc_dev
+lirc_rpi gpio_in_pin=18
+</code></pre>
+
+<p>Dodatkowo ten wpis powinien być w pliku <code>/boot/config</code>, jeśli go tam nie ma to najlepiej dopisać go w ostatniej linii:</p>
+
+<pre><code>dtoverlay=lirc-rpi,gpio_in_pin=18
+</code></pre>
+
+<blockquote>
+<p><strong>UWAGA!</strong> Przy <em>gpio_in_pin</em> podajesz własny numer <strong>GPIO</strong>, czyli tam, gdzie masz wpięty pin <strong>OUT</strong> odbiornika.<br />
+A także, jeśli musiałeś dopisywać/zmieniać powyższe 3 linie niestety musisz strzelić malinie miękki <strong>restart</strong> :)</p>
+</blockquote></li>
+
+<li><p>Teraz odczytywanie kodów pilota powinno już działać - sprawdźmy to wywołując <code>mode2 -d /dev/lirc0</code>. Jeśli odbiornik jest zajęty przez inny proces i dostajemy taki komunikat:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">pi@raspberrypi:~ $ mode2 -d /dev/lirc0
+Using driver default on device /dev/lirc0
+Cannot initiate device /dev/lirc0</code></pre></td></tr></table>
+</div>
+</div>
+<p>musimy zwolnić urządzenie <em>lirc0</em> i ponownie uruchomić odczytywanie:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">pi@raspberrypi:~ $ sudo /etc/init.d/lircd stop
+mode2 -d /dev/lirc0</code></pre></td></tr></table>
+</div>
+</div>
+<p>Teraz powinniśmy być w stanie odczytać wciskane klawisze na pilocie:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">pi@raspberrypi:~ $ mode2 -d /dev/lirc0
+Using driver default on device /dev/lirc0
+Trying device: /dev/lirc0
+Using device: /dev/lirc0
+space 16777215
+pulse 809
+space 957
+pulse 815
+space 933
+pulse 1729
+space 1844
+pulse 1703
+space 1845
+pulse 1704
+space 932
+pulse 841
+...</code></pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>Jeśli kody pojawiają się mimo, że nie wciskasz żadnych klawiszy na pilocie (w sposób ciągły) na 99% masz problem z zasilaniem odbiornika lub linią danych. Osobiście miałem ten problem i gniotłem go dość długo (kilka dni), zanim okazało się, że potrzebny jest <strong>kondensator</strong> na linii zasilającej czujnik - tak jak na <a href="#hardware">schemacie</a>.
+Przejście do następnego kroku poradnika ma sens jedynie wtedy, gdy wraz z wciskaniem klawiszy dostajesz w miarę stabilne odczyty.</p>
+</blockquote></li>
+</ol>
+
+<h1 id="konfiguracja">Konfiguracja&nbsp;<a class="anchor" href="#konfiguracja"><i class="small linkify icon"></i></a> </h1>
+
+<p>To, co teraz zrobisz zależy od tego, jaki masz <strong>pilot</strong>. Sprawdź na stronie <a href="http://lirc-remotes.sourceforge.net/remotes-table.html">Remotes Database</a>, czy Twój remote jest na liście i ściągnij gotową konfigurację. Dzięki temu trikowi możesz odpuścić sobie <strong>krok 1.</strong> konfiguracji i przejść od razu do <strong>kroku nr. 2</strong>.</p>
+
+<ol>
+<li><p>Przypisujemy nazwy przycisków - uruchamiamy</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">irrecord -d /dev/lirc0 ~/moj_pilot.conf</code></pre></td></tr></table>
+</div>
+</div>
+<p>i jedziemy wg <strong>instrukcji na ekranie</strong>. Efekt powinien wyglądać tak jak tu:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">pi@raspberrypi:~ $ irrecord -d /dev/lirc0 ~/moj_pilot.conf
+Running as regular user pi
+Using driver default on device /dev/lirc0
+
+irrecord -  application for recording IR-codes for usage with lirc
+Copyright (C) 1998,1999 Christoph Bartelmus(lirc@bartelmus.de)
+
+This program will record the signals from your remote control
+and create a config file for lircd.
+
+A proper config file for lircd is maybe the most vital part of this
+package, so you should invest some time to create a working config
+file. Although I put a good deal of effort in this program it is often
+not possible to automatically recognize all features of a remote
+control. Often short-comings of the receiver hardware make it nearly
+impossible. If you have problems to create a config file READ THE
+DOCUMENTATION at https://sf.net/p/lirc-remotes/wiki
+
+If there already is a remote control of the same brand available at
+http://sf.net/p/lirc-remotes you might want to try using such a
+remote as a template. The config files already contains all
+parameters of the protocol used by remotes of a certain brand and
+knowing these parameters makes the job of this program much
+easier. There are also template files for the most common protocols
+available. Templates can be downloaded using irdb-get(1). You use a
+template file by providing the path of the file as a command line
+parameter.
+
+Please take the time to finish the file as described in
+https://sourceforge.net/p/lirc-remotes/wiki/Checklist/ an send it
+to  &lt;lirc@bartelmus.de&gt; so it can be made available to others.
+
+Press RETURN to continue.</code></pre></td></tr></table>
+</div>
+</div>
+<p>Tutaj chodzi o to, żeby malina dobrze poznała nasz pilot - kodowanie, sekwencję bitów i poszczególne przyciski, które po kolei wyklikamy i nazwiemy.</p>
+
+<p>Dla porównania <code>lircd.conf</code> dla mojego pilota wygląda tak:</p>
+
+<pre><code>begin remote
+    
+name  cyfra+
+bits           13
+flags RC5|CONST_LENGTH
+eps            30
+aeps          100
+    
+one           836   937
+zero          836   937
+plead         816
+gap          113535
+toggle_bit_mask 0x800
+frequency    38000
+    
+    begin codes
+        OK                       0x0297
+        KEY_POWER                0x128C
+        pilot                    0x128F
+        progr                    0x028F
+        plus                     0x12AF
+        KEY_LEFT                 0x0295
+        KEY_RIGHT                0x0296
+        KEY_UP                   0x0290
+        KEY_DOWN                 0x0291
+        KEY_1                    0x1281
+        KEY_2                    0x1282
+        KEY_3                    0x1283
+        KEY_4                    0x1284
+        KEY_5                    0x1285
+        KEY_6                    0x1286
+        KEY_7                    0x1287
+        KEY_8                    0x1288
+        KEY_9                    0x1289
+        KEY_0                    0x1280
+        x                        0x02A1
+        .&gt;                       0x0293
+        serw                     0x0292
+        KEY_MENU                 0x02AA
+        A                        0x02AB
+        B                        0x02AC
+        C                        0x02AD
+        D                        0x02AE
+        E                        0x02AF
+        KEY_MUTE                 0x0286
+        tv/sat                   0x12A8
+    end codes
+    
+end remote
+</code></pre></li>
+
+<li><p>Teraz twój plik z zapisaną konfiguracją kopiujesz do <code>/etc/lirc</code>, ale najpierw zrób backup już istniejącego:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">sudo cp /etc/lirc/lircd.conf /etc/lirc/lircd.conf.bak
+sudo cp ~/moj_pilot.conf /etc/lirc/lircd.conf</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>Odpalamy na nowo <code>lircd</code> i od tej pory <code>irw</code> powinien pokazać konkretne kody przycisków, gdy naciśniesz je na pilocie. U mnie przyciski są takie:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">pi@raspberrypi:~ $ sudo /etc/init.d/lircd start
+pi@raspberrypi:~ $ irw
+0000000000001281 00 KEY_1 cyfra+
+0000000000001287 01 KEY_7 cyfra+
+0000000000001284 00 KEY_4 cyfra+
+0000000000000290 00 KEY_UP cyfra+
+0000000000000291 00 KEY_DOWN cyfra+
+0000000000000296 00 KEY_RIGHT cyfra+
+0000000000000295 00 KEY_LEFT cyfra+
+0000000000000286 01 KEY_MUTE cyfra+
+0000000000001281 00 KEY_1 cyfra+
+000000000000028f 00 progr cyfra+</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>Na koniec tworzymy <strong>skrypty</strong>, które będą wywoływały <strong>akcje</strong> po naciśnięciu przycisku. Edytujemy plik <code>lircrc</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">sudo nano /etc/lirc/lircrc</code></pre></td></tr></table>
+</div>
+</div>
+<p>Wszystkie <strong>akcje</strong> programowane są w ten sposób:</p>
+
+<pre><code>begin                           # start akcji
+     prog = irexec              # proces obslugujacy wywolanie komendy, pozostawiamy niezmienione
+     button = KEY_2             # nazwa przycisku, na ktory irexec ma wywolac akcje
+     config = gpio write 29 1   # komenda do wywolania przez akcje
+end                             # koniec akcji
+    
+# RADIO
+begin
+     prog = irexec
+     button = KEY_PLUS
+     config = mplayer http://195.150.20.242:8000/rmf_fm
+end
+    
+# OCZYSZCZACZ NA 2h - STEROWANIE DOMOTICZ
+begin
+     prog = irexec
+     button = KEY_0
+     config = curl &quot;http://adres:port/json.htm?type=command&amp;param=switchlight&amp;idx=111&amp;switchcmd=On&quot;
+end
+    
+# VOLUME +
+begin
+     prog = irexec
+     button = KEY_UP
+     config = sudo /usr/bin/amixer -q -M sset PCM 10%+
+end
+</code></pre>
+
+<p>Zapisujemy wciskając <em>Ctrl+X</em>, potem klawiszem <em>T</em> potwierdzamy zapis i wychodzimy z <em>nano</em>.</p></li>
+
+<li><p>Włączamy autostart <code>irexec'a</code> przy każdym starcie maliny - na końcu <code>/etc/rc.local</code> dodajemy</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">irexec /etc/lirc/lircrc &amp;</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+
+<blockquote>
+<p>To nie wszystko, co potrafi <code>lirc</code>. Można też zaprogramować sekwencje przycisków (dla mnie <strong>bomba</strong>) i wiele innych ciekawych bajerów, ciekawskich po <strong>szczegóły</strong> odsyłam do <a href="http://www.lirc.org/html/index.html">manuala</a>.</p>
+</blockquote>
+
+<h1 id="testy">Testy&nbsp;<a class="anchor" href="#testy"><i class="small linkify icon"></i></a> </h1>
+
+<ol>
+<li><p>Wciskasz przyciski pilota i sprawdzasz, czy zapisane w <code>lircrc</code> komendy się wywołują.</p></li>
+
+<li><p><strong>Koniec.</strong> Jeśli wszystko działa tak, jak zaprogramowałeś to <strong>moje gratulacje</strong>, umiesz już sterować maliną za pomocą pilota. Możesz pochwalić się żonie i sąsiadowi :P</p></li>
+</ol>
+
+<h1 id="bonus">Bonus&nbsp;<a class="anchor" href="#bonus"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="modyfikacja-pliku-lircrc">Modyfikacja pliku <code>lircrc</code>&nbsp;<a class="anchor" href="#modyfikacja-pliku-lircrc"><i class="small linkify icon"></i></a> </h2>
+
+<p>Po każdej zmianie pliku <code>lircrc</code> trzeba uruchomić na nowo <code>irexec</code>:</p>
+
+<ol>
+<li><p>Kill&rsquo;ujemy <code>irexec'a</code> (jeśli obecnie działa) i upewniamy się, że nie ma już żadnych uruchomionych <code>irexec'ów</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">ps aux | grep irexec</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>Odpalamy nowy <code>irexec</code>, który załaduje już <strong>nowy plik</strong> <code>lircrc</code> (komendą <code>irexec -d</code> lub lepiej dla debugu <code>irexec</code> ).</p></li>
+</ol>
+
+<h2 id="linki">Linki&nbsp;<a class="anchor" href="#linki"><i class="small linkify icon"></i></a> </h2>
+
+<ul>
+<li><a href="http://www.lirc.org/">oficjalna strona LIRC</a></li>
+<li><a href="http://www.lirc.org/html/index.html">LIRC manual</a></li>
+<li><a href="http://lirc-remotes.sourceforge.net/remotes-table.html">baza pilotów</a><br /></li>
+</ul>
+
+<h2 id="obsługa-z-nowymi-kernelami">Obsługa z nowymi kernelami&nbsp;<a class="anchor" href="#obsługa-z-nowymi-kernelami"><i class="small linkify icon"></i></a> </h2>
+
+<p>W nowszych kernelach (od release <strong>4.19.y</strong> w górę) pakiet <em>lirc</em> został <strong>porzucony</strong> na rzecz nowszego <em>gpio-ir</em>. Niestety konfiguracja <em>gpio-ir</em> wykracza poza ramy tego wpisu, być może w niedalekiej przyszłości powstanie wpis o <em>gpio-ir</em>.
+W moim przypadku, po aktualizacji do nowego kernela mojej Raspberry Pi mój pilot z niewiadomych przyczyn <strong>przestał działać</strong>. Zajęło mi około tygodnia, żeby zgłębić temat i tak w nowym kernelu:</p>
+
+<ul>
+<li>nie ma <em>lirc</em> - jest za to <em>gpio-ir</em>, co prawda można włączyć <strong>overlay</strong> dla <em>lirc</em> w <code>\boot\config.txt\</code>, ale odbiornik wciąż nie działa,</li>
+<li>odbiornik wydaje się być &ldquo;niezałączony&rdquo; - na jego nóżce zasilania brak jest <strong>3.3V</strong> i nawet jeśli ustawimy mu w <code>\boot\config.txt</code> brak jest <strong>pull-up&rsquo;a</strong> na linii sygnałowej - polecam sprawdzić to multimetrem w pierwszej kolejności.</li>
+</ul>
+
+<p>Podczas całej batalii znalazłem zaledwie <strong>2 wpisy</strong> w Internecie od ludzi z tym problemem (linki poniżej). W końcu zdecydowałem się na przywrócenie poprzedniej wersji kernela (release 4.14.y), na której <em>lirc</em> działa i mam nadzieję, że konfiguracja <em>gpio-ir</em> w kolejnym release będzie dużo prostsza. Przywrócić kernela do <strong>4.14.y</strong> można wywołując komendę:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">sudo rpi-update c30ae2bb624f7fd60fcbedff950cc4361c8d2aec</code></pre></td></tr></table>
+</div>
+</div>
+<p>Przykładowe &ldquo;rozwiązania&rdquo; z Internetu:</p>
+
+<ul>
+<li><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=235256">Rozwiązanie poprzez patch od użytkownika neuralassembly</a><br /></li>
+<li><a href="https://github.com/raspberrypi/linux/issues/2993">Issue na <strong>github&rsquo;ie</strong> z potencjalnym &ldquo;rozwiązaniem&rdquo; problemu i moim komentarzem</a></li>
+</ul>
+
+<blockquote>
+<p><strong>ACHTUNG!</strong> Powyższa instrukcja służy wyłącznie celom edukacyjnym. Wszystko to robisz na własną odpowiedzialność, a autor nie bierze odpowiedzialności za szkody powstałe w wyniku nierozważnych działań.</p>
+</blockquote>
+
+				</article>				
+			</section>
+
+			
+			<section class="ui secondary attached segment dream-tags">
+				
+					
+
+
+
+
+	
+		<a class="ui label orange " href="/tags/linux" title="linux">linux</a>
+	
+		<a class="ui label purple " href="/tags/raspberry" title="raspberry">raspberry</a>
+	
+		<a class="ui label pink " href="/tags/tftp" title="TFTP">TFTP</a>
+	
+		<a class="ui label purple " href="/tags/kamera" title="kamera">kamera</a>
+	
+
+
+				
+			</section>
+
+			
+			
+				<section class="ui secondary  attached segment share row box">
+					
+
+
+
+
+
+
+
+
+<div class="author">
+	
+	<img class="avatar" src="/images/ja_awatar.png">
+	
+</div>
+<div class="info grow flexbox">
+	
+	<p class="name">majki</p>
+	
+	<p class="desc">Wszystko jest możliwe - niemożliwe potrzebuje tylko więcej czasu.</p>
+</div>
+
+
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Udostępnij</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Robótki z Linuxem w kamerce IP  https:\/\/majki09.github.io\/posts\/tftp_i_kamera_ip\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section>
+
+				</section>
+			
+
+			
+			
+								
+				<section class="ui secondary attached segment copyright">
+					
+
+
+
+
+<div class="row box">
+	<a rel="license" class="license image none flexbox" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+		<img alt="Creative Commons License" src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" style="border-width: 0"></img>
+	</a>
+	<span class="license statement both flexbox">
+		Ten wpis jest na licencji
+		<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+	</span>
+</div>
+				</section>
+			
+
+			
+			
+				<div class="ui secondary bottom attached stacked segment disqus">
+					
+<div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = 'https:\/\/majki09.github.io\/posts\/tftp_i_kamera_ip\/';
+		this.page.identifier = 'f67432bc8ceb7c1c679c444af271d80b';
+	};
+	(function() {
+   	var d = document, s = d.createElement('script');
+   	s.src = 'https://' + 'majki-blog' + '.disqus.com/embed.js';
+   	s.setAttribute('data-timestamp', +new Date());
+   	(d.head || d.body).appendChild(s);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+				</div>
+			
+		</div>
+	</div>
+
+				</div>
+				<div class="back">
+					
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="O mnie kilka słów"></i>
+	</div>
+	
+		
+	
+		
+	
+
+	
+	
+	
+	
+	
+	
+	
+		
+		
+			<div class="item">
+				<a href="https://github.com/majki09" target="	_blank">
+					<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+			<div class="item">
+				<a href="https://www.stackoverflow.com/users/8344456/majki" target="	_blank">
+					<i id="ico" class="inverted big link stack overflow icon" title="Stack Overflow"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+</nav>
+
+
+
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments">
+			<div class="ui inverted segment">
+				<article class="twemoji">
+					<h1>Kim jestem?</h1>
+
+<p>Nazywam się Łukasz Majkut.</p>
+
+<p>Lubię elektronikę i większość co związana z komputerami, czyli od programowania, po obróbkę obrazu i wideo.</p>
+
+<p>Ciekawi mnie też <strong>fotografia</strong>, w sumie to od zawsze ciekawiła. Czy jestem <strong>fotografem</strong>? Jeśli fotograf, to osoba, która robi zdjęcia to tak, jestem fotografem 😄. Już niebawem na tym blogu powstaną wpisy na temat właśnie fotografii, będzie coś o podstawach, jak i obróbce zdjęć w <strong>Lightroomie</strong>.</p>
+
+<p>Od czterech lat pracuję jako inżynier <a href="https://en.wikipedia.org/wiki/In-circuit_test">ICT</a> w dużej firmie w Krakowie. Jest to praca polegająca na testowaniu <strong>elektroniki</strong>, ale są też elementy <strong>programowania</strong>. Praca jest bardzo specyficzna, a jedna fikstura do testów może zawierać <strong>5km</strong> kabli i ważyć <strong>45kg!</strong></p>
+
+<p>Zapraszam też do zwiedzenia mojego profilu na <strong>githubie</strong>, poprzez kliknięcie na ikonkę powyżej.</p>
+
+<p><h1>Blog</h1>
+Ten blog powstał ogólnie po to, żeby zebrać w całość niektóre z moich udanych pomysłów w jednym miejscu. Nie raz, żeby zrobić coś ciekawego musiałem przekopywać się przez tonę informacji nie tylko z Internetu. Mam nadzieję, że dzięki moim wpisom Ty już nie będziesz musiała / musiał tego robić  😄.</p>
+
+<p>Blog jest też takim moim portfolio, czymś, czym mogę się spokojnie pochwalić.</p>
+
+<!---
+commented out by majki
+I’m just another teenager who likes **writing**, **programming** and **making stuff**. Even setting the title as **Who Am I**  for this article is reminding me of `whoami` in Linux. I feel the inner urge to contribute something to the Internet because I love writing and I believe posting something online enables users all around the globe to see your work and suggest improvements.
+
+Recently I've also started taking interest in web designing and hosting the fruitful results of which these site and blogs are! I also make **projects** and share them online at **Instructables**, the link of which has been placed on the home page. Making stuff is just one of the things I love the most.
+
+That’s all that I can think of right now. Hopefully I’ll add something more to this later on. 😅
+
+Curious about me? Use the social links above to check out my profiles.
+
+You can also support me on <a href="https://patreon.com/UtkarshVerma" target="_blank">Patreon</a>. I'd really appreciate it.
+-->
+
+				</article>
+			</div>
+		</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+	
+	
+		<script id="dsq-count-scr" src="//majki-blog.disqus.com/count.js" async></script>
+	
+
+		
+
+<script src="/js/site.js"></script>
+
+
+
+	<script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.6"></script>
+
+
+
+
+
+
+
+
+
+		
+
+
+		
+
+	<script>
+		(function () {
+		  console.log("Twemoji up and making stuff colourful!");
+		  for (var b = document.getElementsByClassName("twemoji"), a = 0; a < b.length; a++) {
+			twemoji.parse(b[a]);
+		  }
+		})();
+	</script>
+
+
+	</body>
+</html>

@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<title>
+	Gniazdko SmartDGM
+</title>
+		<style>
+	body {
+		display: block;
+		--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		
+	}
+
+	body, body.pushable {
+		background-repeat: no-repeat;
+	  	background-attachment: fixed;
+	  	background-size: cover !important;
+	}
+</style>
+
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+	
+	
+	
+	<meta name="author" content="majki" />
+	<meta name="description" content="Smart gniazdko SmartDGM i wgrywanie Tasmota" />
+
+
+
+<meta name="generator" content="Hugo 0.54.0" />
+
+
+<link rel="shortcut icon" href="/img/defaultFav.ico">
+
+
+
+
+		
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script
+	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+
+ <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Inconsolata" rel="stylesheet"> 
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/site.css">
+
+
+
+
+
+
+	
+		<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/UtkarshVerma/hugo-dream-plus/ae11561d/exampleSite/static/css/highlight.css">
+	
+
+
+
+<style>
+	body.pushable {
+		display: block;
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		 ;
+	}
+</style>
+
+
+
+<script>
+	var colorBG =  true 
+	
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+
+	</head>
+
+	<body>
+		<script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+
+
+
+
+
+
+	var gradients = [
+	  [],
+	  ['#40e0d0', '#ff8c00', '#ff0080'], 
+	  ['#3e5151', '#decba4'], 
+	  ['#11998e', '#38ef7d'], 
+	  ['#108dc7', '#ef8e38'], 
+	  ['#fc5c7d', '#6a82fb'], 
+	  ['#fc466b', '#3f5efb'], 
+	  ['#c94b4b', '#4b134f'], 
+	  ['#23074d', '#cc5333'] 
+	];
+	document.body.style.setProperty('--colorBG', connect(gradients[getRandomInt(0, gradients.length)]));
+
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  var random;
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min;
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random;
+	      break;
+	    }
+	  }
+	  return random;
+	}
+
+	function connect(arr) {
+	  var str = '';
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', ';
+	    } else {
+	      str += arr[i];
+	    }
+	  }
+	  return str;
+	}
+</script>
+
+
+
+
+		<div id="sidebar" class="ui sidebar inverted vertical menu">
+	
+	<section id="author" class="ui top attached center aligned inverted segment">
+		
+<div class="ui small circular image">
+	
+		<img src="/images/ja_awatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	majki
+	<div class="sub header">Wszystko jest możliwe - niemożliwe potrzebuje tylko więcej czasu.</div>
+</h3>
+
+	</section>
+
+	
+	
+		<section class="ui attached center aligned inverted segment sidebar-dream-tags">
+			
+			
+			
+			
+
+
+
+
+	
+	
+		
+			
+			<a class="ui label violet " href="/tags/domoticz" title="domoticz">domoticz</a>
+		
+			
+			<a class="ui label red " href="/tags/programowanie" title="programowanie">programowanie</a>
+		
+			
+			<a class="ui label purple " href="/tags/raspberry" title="raspberry">raspberry</a>
+		
+			
+			<a class="ui label violet " href="/tags/atmelstudio" title="atmelstudio">atmelstudio</a>
+		
+			
+			<a class="ui label orange " href="/tags/avr" title="avr">avr</a>
+		
+			
+			<a class="ui label red " href="/tags/avrdude" title="avrdude">avrdude</a>
+		
+			
+			<a class="ui label violet " href="/tags/esp8266" title="esp8266">esp8266</a>
+		
+			
+			<a class="ui label blue " href="/tags/linux" title="linux">linux</a>
+		
+	
+
+
+		</section>
+	
+
+	
+	
+		<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+			<div class="ui inverted accordion">
+				
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/avr">avr</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/atmelstudio_usbasp/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>USBasp w AtmelStudio</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/domoticz">domoticz</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/gniazdko_smartdgm/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Gniazdko SmartDGM</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://majki09.github.io/posts/brak-ruchu-w-domu/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Wykrywanie domowników w Domoticz</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/raspberry">raspberry</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/rc5/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Raspberry Pi na pilota</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+			</div>
+		</section>
+	
+
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+		
+
+	<p>© 2019 majki-blog</p>
+
+
+<p>Zasilane przez <a href="https://gohugo.io/" target="_blank">Hugo</a> z motywem <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus.</a></p>
+
+	</section>
+</div>
+
+
+		<div class="pusher">
+			<div class="flipper">
+				<div class="front">
+					
+	<nav class="ui top secondary menu bar">
+	
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="O mnie kilka słów"></i>
+	</div>
+
+	
+	
+		<div class="item">
+			<a href="/">
+				<i class="inverted big link home icon" title="Główna strona"></i>
+			</a>
+		</div>
+	
+
+	
+	
+
+	
+	
+		<div class="item">
+			<a href="/tags">
+				<i class="inverted big link tags icon" title="Wszystkie tagi"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		<div class="item">
+			<a href="/categories">
+				<i class="inverted big link cubes icon" title="Wszystkie kategorie"></i>
+			</a>
+    	</div>
+	
+
+	
+	
+
+	
+	
+		<div class="ui container tablet computer only grid">
+			<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+				<i class="inverted big link sidebar icon" title="Pokazuj boczny pasek"></i>
+			</div>
+		</div>
+	
+
+	
+	
+		<div class="item right">
+			<a href="/posts/index.xml">
+				<i class="inverted big link rss icon" title="RSS"></i>
+			</a>
+		</div>
+	
+</nav>
+
+
+	<div class="ui centered grid">
+		
+		<div class="sixteen wide mobile only column">
+				<div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">		
+		
+		<header id="author" class="ui top attached center aligned inverted segment">
+			
+<div class="ui small circular image">
+	
+		<img src="/images/ja_awatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	majki
+	<div class="sub header">Wszystko jest możliwe - niemożliwe potrzebuje tylko więcej czasu.</div>
+</h3>
+
+		</header>
+
+		
+		<div class=" title header-title">
+			
+				<div id="tag-category-pop" class="ui red right corner label">
+					<i class="hand point icon down" title="Pokaż/ukryj tagi i kategorie"></i>
+				</div>
+			
+		</div>
+		
+		
+		<div id="tag-category" class=" content">
+			
+				<section class="ui attached center aligned inverted segment dream-tags none flexbox">
+					
+					
+					
+
+
+
+
+	
+	
+		
+			
+			<a class="ui label yellow " href="/tags/domoticz" title="domoticz">domoticz</a>
+		
+			
+			<a class="ui label red " href="/tags/programowanie" title="programowanie">programowanie</a>
+		
+			
+			<a class="ui label orange " href="/tags/raspberry" title="raspberry">raspberry</a>
+		
+			
+			<a class="ui label red " href="/tags/atmelstudio" title="atmelstudio">atmelstudio</a>
+		
+			
+			<a class="ui label red " href="/tags/avr" title="avr">avr</a>
+		
+			
+			<a class="ui label olive " href="/tags/avrdude" title="avrdude">avrdude</a>
+		
+			
+			<a class="ui label olive " href="/tags/esp8266" title="esp8266">esp8266</a>
+		
+			
+			<a class="ui label olive " href="/tags/linux" title="linux">linux</a>
+		
+	
+
+
+				</section>
+			
+
+			
+				<section class="ui attached inverted segment dream-categories both flexbox">
+					<div class="inverted accordion">
+						
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/avr">avr</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/atmelstudio_usbasp/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>USBasp w AtmelStudio</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/domoticz">domoticz</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/gniazdko_smartdgm/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Gniazdko SmartDGM</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://majki09.github.io/posts/brak-ruchu-w-domu/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Wykrywanie domowników w Domoticz</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/raspberry">raspberry</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://majki09.github.io/posts/rc5/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Raspberry Pi na pilota</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+					</div>
+				</section>
+			
+		</div>
+
+		
+		<footer class="ui bottom attached center aligned inverted segment">
+			
+
+	<p>© 2019 majki-blog</p>
+
+
+<p>Zasilane przez <a href="https://gohugo.io/" target="_blank">Hugo</a> z motywem <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus.</a></p>
+
+		</footer>
+	</div>
+</div>
+
+		</div>
+
+		<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+			
+			<section class="ui secondary top attached black segment post-head">
+				<h1 class="post-title">
+					Gniazdko SmartDGM
+				</h1>
+
+				<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>1.09.2019</span></div>
+					
+					<div><span class="disqusComment"><i class="comment outline icon"></i><a href="https://majki09.github.io/posts/gniazdko_smartdgm/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="36310a20cb664ba6ed0e2ccac0d2a4ed"></a></span></div>
+					<div><span><i class="clock outline icon"></i>8 min czytania</span></div>
+					<div><span><i class="angle double up icon"></i>Ostatnia zmiana 1.09.2019</span></div>
+				</div>
+				<hr>
+
+				
+					<div class="toc">
+						<nav id="TableOfContents">
+<ul>
+<li><a href="#godne-uwagi-smart-gniazdko-w-ofercie-biedronki">Godne uwagi smart gniazdko w ofercie Biedronki</a></li>
+<li><a href="#otwieramy-puszkę-pandory">Otwieramy puszkę Pandory</a>
+<ul>
+<li><a href="#wnętrzności-gniazdka">Wnętrzności gniazdka</a></li>
+<li><a href="#wyciągamy-płytkę-z-gniazdka">Wyciągamy płytkę z gniazdka</a></li>
+<li><a href="#podłączamy-kable-do-programowania">Podłączamy kable do programowania</a></li>
+</ul></li>
+<li><a href="#wgrywamy-tasmota">Wgrywamy Tasmota</a>
+<ul>
+<li><a href="#sposób-bez-backupu">Sposób bez backupu</a>
+<ul>
+<li><a href="#czego-potrzebujesz">Czego potrzebujesz</a></li>
+<li><a href="#jedziemy-z-koksem">Jedziemy z koksem</a></li>
+</ul></li>
+<li><a href="#sposób-z-backupem">Sposób z backupem</a>
+<ul>
+<li><a href="#czego-potrzebujesz-1">Czego potrzebujesz</a></li>
+<li><a href="#podłączenie-modułu-do-raspberrypi">Podłączenie modułu do RaspberryPi</a></li>
+<li><a href="#wgrywamy-soft">Wgrywamy soft</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#składanie-gniazdka-do-kupy">Składanie gniazdka do kupy</a></li>
+<li><a href="#konfiguracja">Konfiguracja</a></li>
+<li><a href="#mqtt">MQTT</a></li>
+<li><a href="#domoticz">Domoticz</a>
+<ul>
+<li><a href="#konfiguracja-mqtt">Konfiguracja MQTT</a></li>
+<li><a href="#dodajemy-przełącznik-i-miernik-zużycia-energii">Dodajemy przełącznik i miernik zużycia energii</a></li>
+</ul></li>
+<li><a href="#bonus">Bonus</a>
+<ul>
+<li><a href="#kalibracja-pomiaru-prądu">Kalibracja pomiaru prądu</a></li>
+</ul></li>
+<li><a href="#linki">Linki</a></li>
+<li><a href="#podsumowanie">Podsumowanie</a></li>
+</ul>
+</nav>
+					</div>
+				
+
+				<article class="post-content twemoji">
+					
+
+<h1 id="godne-uwagi-smart-gniazdko-w-ofercie-biedronki">Godne uwagi smart gniazdko w ofercie Biedronki&nbsp;<a class="anchor" href="#godne-uwagi-smart-gniazdko-w-ofercie-biedronki"><i class="small linkify icon"></i></a> </h1>
+
+<p>Gniazdko <strong>SmartDGM</strong> wyjęte z blistra jest gotowe do użycia niemal od razu. Wystarczy krótka konfiguracja i jesteśmy w stanie sterować gniazdkiem niemal z każdego miejca na świecie. A co, jeśli mamy już chociażby <strong>Domoticza</strong> i chcemy to gniazdko z nim zintegrować? Dobrym sposobem na to jest zmiana softu i wgranie open-sourcowego <strong>Tasmota</strong>. Zapraszam do poradnika :)</p>
+
+<blockquote>
+<p>Zanim ruszymy dalej upewnijmy się, że:</p>
+
+<ul>
+<li>umiesz się posługiwać lutownicą,</li>
+<li>znasz podstawy elektroniki (musisz chociażby wiedzieć, żeby <strong>odłączyć</strong> gniazdko od sieci 230V zanim zaczniesz w nim grzebać :D ).</li>
+</ul>
+</blockquote>
+
+<h1 id="otwieramy-puszkę-pandory">Otwieramy puszkę Pandory&nbsp;<a class="anchor" href="#otwieramy-puszkę-pandory"><i class="small linkify icon"></i></a> </h1>
+
+<p>Na dzień dzisiejszy nie istnieje żaden skuteczny <strong>OTA hack</strong> na tę wersję softu i trzeba programować przewodowo. Niestety konstrukcja gniazdka uniemożliwia łatwe podłączenie się do pinów programowania. Gniazdko jest sklejone i trzeba je otworzyć, a najlepiej to zrobić, wsuwając coś cienkiego (np. <strong>nożyk/skalpel</strong> jak zwał, tak zwał) w szczeliny po bokach przy wystających bolcach.</p>
+
+<p>Po otwarciu ukaże nam się widok:
+<img src="/images/smartDGM/2.jpg" alt="1" title="Płytka z widocznymi modułami TYWE2S i BL0937" /></p>
+
+<h2 id="wnętrzności-gniazdka">Wnętrzności gniazdka&nbsp;<a class="anchor" href="#wnętrzności-gniazdka"><i class="small linkify icon"></i></a> </h2>
+
+<p>W skład gniazdka <strong>smartDGM</strong> wchodzą:</p>
+
+<ul>
+<li>bazujący na ESP moduł WiFi <strong>TYWE2S</strong>,</li>
+<li>moduł do pomiarów napięcia, prądu i energii <strong>BL0937</strong>,</li>
+<li>1 jednokolorowa dioda LED,</li>
+<li>1 przycisk,</li>
+<li>1 przekaźnik,</li>
+<li>inne klamoty potrzebne do działania :).</li>
+</ul>
+
+<h2 id="wyciągamy-płytkę-z-gniazdka">Wyciągamy płytkę z gniazdka&nbsp;<a class="anchor" href="#wyciągamy-płytkę-z-gniazdka"><i class="small linkify icon"></i></a> </h2>
+
+<p>Żeby dobrać się do linii <strong>3V3</strong>, <strong>GND</strong>, <strong>RX</strong> i <strong>TX</strong> trzeba wyjąć płytkę z gniazdka. A żeby wyjąć płytkę z gniazdka wystarczy wylutować ją w <strong>trzech miejscach</strong>:</p>
+
+<p><img src="/images/smartDGM/5_desolder.jpg" alt="text" title="W tych miejscach odlutuj płytkę od reszty gniazdka" /></p>
+
+<p><strong>Kabel uziemienia</strong> najlepiej tymczasowo odlutować przy płytce, bez niego będzie dużo łatwiej z dalszymi krokami.</p>
+
+<h2 id="podłączamy-kable-do-programowania">Podłączamy kable do programowania&nbsp;<a class="anchor" href="#podłączamy-kable-do-programowania"><i class="small linkify icon"></i></a> </h2>
+
+<p>Po wyciągnięciu płytki przylutuj <strong>4 kable</strong> do padów tak jak na zdjęciu:</p>
+
+<p><img src="/images/smartDGM/7.jpg" alt="1" title="Pinout modułu TYWE2S i podłączenie do programowania" /></p>
+
+<h1 id="wgrywamy-tasmota">Wgrywamy Tasmota&nbsp;<a class="anchor" href="#wgrywamy-tasmota"><i class="small linkify icon"></i></a> </h1>
+
+<p>W zależności od tego, czy potrzebujesz backupu oryginalnego wsadu pamięci (żeby móc potem wrócić do oryginału) wybierz jeden z dwóch sposobów:</p>
+
+<ul>
+<li><a href="#sposób-bez-backupu">bez backupu - prostszy</a>,</li>
+<li><a href="#sposób-z-backupem">z backupem - trudniejszy</a>.</li>
+</ul>
+
+<h2 id="sposób-bez-backupu">Sposób bez backupu&nbsp;<a class="anchor" href="#sposób-bez-backupu"><i class="small linkify icon"></i></a> </h2>
+
+<p>Ten sposób jest dużo łatwiejszy, ale nie ma możliwości zrobienia backupu oryginalnego softu (ponieważ na dzień dzisiejszy <strong>NodeMCU PyFLasher</strong> nie obsługuje komendy <em>read_flash</em>). Wybierz ten sposób, jeśli nie potrzebujesz backupu oryginalnego softu.</p>
+
+<h3 id="czego-potrzebujesz">Czego potrzebujesz&nbsp;<a class="anchor" href="#czego-potrzebujesz"><i class="small linkify icon"></i></a> </h3>
+
+<ul>
+<li>komputer PC,</li>
+<li>NodeMCU PyFlasher - do pobrania <a href="https://github.com/marcelstoer/nodemcu-pyflasher/releases">stąd</a></li>
+<li>konwerter <strong>USB-UART</strong> (mile widziany CH341, bo ma wyprowadzenie 3V3 do zasilenia modułu),</li>
+<li>binarkę <strong>sonoffa</strong> pobraną z <a href="https://github.com/arendst/Sonoff-Tasmota/releases/">GitHuba projektu Tasmota</a>.</li>
+</ul>
+
+<h3 id="jedziemy-z-koksem">Jedziemy z koksem&nbsp;<a class="anchor" href="#jedziemy-z-koksem"><i class="small linkify icon"></i></a> </h3>
+
+<ol>
+<li>Podłączamy przylutowane kable RX, TX i GND do konwertera USB-UART.</li>
+<li>Zwieramy <strong>GPIO0</strong> do <strong>GND</strong> - chwilowo albo jak kto woli przylutować kabelkiem na czas programowania - chodzi tutaj o wprowadzenie modułu w tryb programowania.</li>
+<li>Zasilamy moduł kablem 3V3 - najlepiej, gdy Twój konwerter USB-UART ma wyprowadzenie z tym napięciem.</li>
+<li>Wybieramy <em>Serial port</em> konwertera w PyFlasherze i wybieramy plik z <em>firmware</em> sonoff&rsquo;a.</li>
+<li><em>Erase flash</em> ustawiamy na <strong>yes, wipes all data</strong>.
+<img src="/images/smartDGM/pyflasher_win.png" alt="Przykładowy wygląd NodeMCU PyFlasher" title="Przykładowy wygląd NodeMCU PyFlasher" /></li>
+<li>Wciskamy <em>Flash NodeMCU</em> i czekamy na koniec programowania.</li>
+<li>Jeśli wszystko OK przechodzimy do <a href="#składanie-gniazdka-do-kupy">składania gniazdka</a>.</li>
+</ol>
+
+<h2 id="sposób-z-backupem">Sposób z backupem&nbsp;<a class="anchor" href="#sposób-z-backupem"><i class="small linkify icon"></i></a> </h2>
+
+<p>Sposób ten jest nieco trudniejszy, ale za to z możliwością backupu oryginalnego wsadu.</p>
+
+<h3 id="czego-potrzebujesz-1">Czego potrzebujesz&nbsp;<a class="anchor" href="#czego-potrzebujesz-1"><i class="small linkify icon"></i></a> </h3>
+
+<ul>
+<li>komputer PC,</li>
+<li>RaspberryPi z <strong>Raspbianem</strong>,</li>
+<li>binarkę <strong>sonoffa</strong> pobraną z <a href="https://github.com/arendst/Sonoff-Tasmota/releases/">GitHuba projektu Tasmota</a>,</li>
+</ul>
+
+<blockquote>
+<p>Poniższe kroki można też wykonać bez RaspberryPi - chociażby na <strong>Windowsie</strong>. W takim przypadku trzeba mieć zainstalowany interpreter <strong>Pythona</strong> i esptool. Wybrałem sposób z maliną, żeby było ciekawiej :)</p>
+</blockquote>
+
+<h3 id="podłączenie-modułu-do-raspberrypi">Podłączenie modułu do RaspberryPi&nbsp;<a class="anchor" href="#podłączenie-modułu-do-raspberrypi"><i class="small linkify icon"></i></a> </h3>
+
+<p>Wszystkie <strong>4 kable</strong> przylutowane do modułu podłącz do <strong>RaspberryPi</strong>, pamiętając przy tym, że podłączasz RX modułu do TXa Raspberry i TX modułu do RXa Raspberry. <strong>Nie pomyl 3V3 z 5V</strong>, bo z modułu pójdzie dym i dalej już nic nie będziesz musiał robić (jedynie posprzątać na stole) :P</p>
+
+<h3 id="wgrywamy-soft">Wgrywamy soft&nbsp;<a class="anchor" href="#wgrywamy-soft"><i class="small linkify icon"></i></a> </h3>
+
+<blockquote>
+<p><strong>UWAGA!</strong> Pamiętaj, że po każdym działaniu na pamięci przez <em>esptool&rsquo;a</em> (czyli po każdym z poniższych kroków) moduł WiFi <strong>wychodzi</strong> z <em>trybu programowania</em>. Przed każdym krokiem z <em>esptool&rsquo;em</em> wprowadź moduł w <em>tryb programowania</em> - najlepiej uruchomić go ponownie zwierając <strong>GPIO0</strong> do GND.</p>
+</blockquote>
+
+<ol>
+<li><p>Robimy <strong>backup</strong> oryginalnego wsadu z pamięci komendą <em>read_flash</em>, binarka ze zgranym wsadem będzie w pliku <em>DGM_backup.bin</em>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">pi@raspdebug:~/esptool $ ./esptool.py --port /dev/ttyAMA0 read_flash 0x00000 0x100000 DGM_backup.bin
+esptool.py v2.8-dev
+Serial port /dev/ttyAMA0
+Connecting...
+Detecting chip type... ESP8266
+Chip is ESP8285
+Features: WiFi, Embedded Flash
+Crystal is 26MHz
+MAC: 2c:f4:32:b4:4c:99
+Uploading stub...
+Running stub...
+Stub running...
+1048576 (100 %)
+1048576 (100 %)
+Read 1048576 bytes at 0x0 in 95.1 seconds (88.3 kbit/s)...
+Hard resetting via RTS pin...</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p><strong>Kasujemy</strong> całą zawartość pamięci (bez tego możesz mieć potem problemy z działaniem gniazdka, poza tym zawsze kasuje się pamięć przed programowaniem):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">pi@raspdebug:~/esptool $ ./esptool.py --port /dev/ttyAMA0 erase_flash
+esptool.py v2.8-dev
+Serial port /dev/ttyAMA0
+Connecting....
+Detecting chip type... ESP8266
+Chip is ESP8285
+Features: WiFi, Embedded Flash
+Crystal is 26MHz
+MAC: 2c:f4:32:b4:4c:99
+Uploading stub...
+Running stub...
+Stub running...
+Erasing flash (this may take a while)...
+Chip erase completed successfully in 3.4s
+Hard resetting via RTS pin...</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p><strong>Flashujemy</strong> gniazdko nowym softem Tasmota:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">pi@raspdebug:~/esptool $ ./esptool.py --port /dev/ttyAMA0 write_flash -fs 1MB -fm dout 0x0 ./sonoff.bin
+esptool.py v2.8-dev
+Serial port /dev/ttyAMA0
+Connecting....
+Detecting chip type... ESP8266
+Chip is ESP8285
+Features: WiFi, Embedded Flash
+Crystal is 26MHz
+MAC: 2c:f4:32:b4:4c:99
+Uploading stub...
+Running stub...
+Stub running...
+Configuring flash size...
+Compressed 515872 bytes to 355877...
+Wrote 515872 bytes (355877 compressed) at 0x00000000 in 32.9 seconds (effective 125.4 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>Robimy <strong>restart</strong> gniazdka poprzez odłączenie i ponowne podłączenie <strong>zasilania 3.3V</strong> - wtedy ruszy inicjalizacja Tasmota i pierwszy rozruch modułu.</p></li>
+</ol>
+
+<h1 id="składanie-gniazdka-do-kupy">Składanie gniazdka do kupy&nbsp;<a class="anchor" href="#składanie-gniazdka-do-kupy"><i class="small linkify icon"></i></a> </h1>
+
+<blockquote>
+<p><strong>UWAGA!</strong> Zanim wszystko polutujesz i posklejasz z powrotem sprawdź sobie, czy Tasmota w ogóle żyje. Zostaw zasilanie 3.3V podłączone i potestuj moduł. Wgraj <a href="#konfiguracja">konfigurację</a> i to powinno już dać jakiś obraz, że jest sens iść dalej :) Dopiero jeśli możesz wejść do ustawień Tasmota zlutuj płytkę z powrotem i potestuj pomiar napięcia, itp. Jeśli nie - spróbuj jeszcze raz skasować pamięć i wgrać Tasmota.</p>
+</blockquote>
+
+<ol>
+<li>Jeśli wszystko działa i wygląda dobrze odłącz i odlutuj wszystkie kable i złóż gniazdko w całość. Najlepiej jest je z powrotem skleić, bo przy odłączaniu z gniazdka 230V gniazdko się rozleci w dłoni i <strong>może kopnąć prądem</strong>!</li>
+<li>Po wyschnięciu kleju wpinamy gniazdko do 230V i przechodzimy do <a href="#konfiguracja">konfiguracji</a>.</li>
+</ol>
+
+<h1 id="konfiguracja">Konfiguracja&nbsp;<a class="anchor" href="#konfiguracja"><i class="small linkify icon"></i></a> </h1>
+
+<p>W menu Tasmota wchodzimy do <em>Configuration</em>, potem do <em>Configure module</em>.
+Prawidłowy konfig dla tego gniazdka to:</p>
+
+<!---
+Typ urządzenia - **generic**. Podłączenie:
+
+ - gpio3 button1,
+ - gpio13 led1i,
+ - gpio14 relay1,
+ - gpio4 bl0937 cf,
+ - gpio5 hlwbl cf1,
+ - gpio12 hlwbl seli.
+-->
+
+<p><img src="/images/smartDGM/tasmota_config.png" alt="tasmota_config" title="Prawidłowa konfiguracja Tasmota" /></p>
+
+<p>Poprawnie skonfigurowany <strong>Tasmota</strong> w naszym gniazdku wygląda tak:
+<img src="/images/smartDGM/tasmota_configured.png" alt="tasmota_ok" title="Przykładowy widok skonfigurowanego Tasmota" /></p>
+
+<h1 id="mqtt">MQTT&nbsp;<a class="anchor" href="#mqtt"><i class="small linkify icon"></i></a> </h1>
+
+<p><strong>Tasmota</strong> wykorzystuje protokół <strong>MQTT</strong> do komunikacji z resztą urządzeń. Zajmijmy się teraz jego konfiguracją.</p>
+
+<ol>
+<li><p><strong>Brokera MQTT</strong> najlepiej zainstalować na urządzeniu, które hostuje Domoticz&rsquo;a. Instalujemy <em>mosquitto</em> i tworzymy konto (np. <em>pi</em>).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">sudo apt-get update
+sudo apt-get install mosquitto mosquitto-clients
+sudo mosquitto_passwd -c /etc/mosquitto/passwd pi</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>Tym poleceniem będziemy podsłuchiwać <strong>komunikaty MQTT</strong> nadawane przez nasze <strong>gniazdko</strong> (zauważ, że Domoticz już nadaje). Uruchom to polecenie i tymczasowo trzymaj konsolę gdzieś z boku.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ssh" data-lang="ssh">mosquitto_sub -h localhost -t &#34;#&#34; -u &#34;pi&#34; -P &#34;tajnehaslo&#34; -v</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>Wchodzimy do <strong>menu Tasmota</strong> i kolejno do <em>Configuration</em>, <em>Configure MQTT</em>.</p></li>
+
+<li><p>W polu <em>Host</em> wpisujemy <em>hostname&rsquo;a</em> urządzenia z domoticzem, albo w ostateczności jego <strong>adres IP</strong>; port domyślny <strong>1883</strong> oraz nazwę użytkownika z <em>mosquitto</em> i hasło.</p></li>
+
+<li><p>Klikamy <em>Save</em>.</p></li>
+</ol>
+
+<h1 id="domoticz">Domoticz&nbsp;<a class="anchor" href="#domoticz"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="konfiguracja-mqtt">Konfiguracja MQTT&nbsp;<a class="anchor" href="#konfiguracja-mqtt"><i class="small linkify icon"></i></a> </h2>
+
+<ol>
+<li>Wchodzimy w zakładkę <em>Sprzęt</em> i dodajemy <em>MQTT Client Gateway with LAN interface</em>.</li>
+
+<li><p>Wklepujemy <strong>konfigurację MQTT</strong> zgodnie z poniższym obrazkiem
+<img src="/images/smartDGM/domoticz_mqtt.png" alt="MQTT" title="Konfiguracja MQTT w Domoticz" /></p>
+
+<blockquote>
+<p><strong>UWAGA!</strong> Pole <em>Adres zdalny</em> najlepiej ustawić <strong>dynamicznie</strong>, czyli <em>localhost</em> albo <em>127.0.0.1</em>. W przeciwnym wypadku będzie zdziwko, że nagle wszystko przestało działać, bo router zmienił adresy IP.</p>
+</blockquote></li>
+
+<li><p>Wciskamy <em>Dodaj</em>.</p></li>
+</ol>
+
+<h2 id="dodajemy-przełącznik-i-miernik-zużycia-energii">Dodajemy przełącznik i miernik zużycia energii&nbsp;<a class="anchor" href="#dodajemy-przełącznik-i-miernik-zużycia-energii"><i class="small linkify icon"></i></a> </h2>
+
+<ol>
+<li>W zakładce <em>Sprzęt</em> dodajemy <em>Dummy switch</em>, wpisujemy nazwę, a z listy wybieramy <strong>Przełącznik</strong>. Będzie to nasz <em>ON/OFF</em> w Domoticz.
+<img src="/images/smartDGM/domoticz_dummy_switch.png" alt="dummy_switch" title="Dodaj Przełącznik" /></li>
+<li>Analogicznie dodajemy <strong>miernik zużycia energii</strong>, wybierając z listy <em>Elektryczność (Chwilowa+Licznik)</em>.</li>
+<li>Wchodzimy do zakładki <em>Urządzenia</em> i wyszukujemy przed chwilą dodane <em>Virtual Sensory</em>
+<img src="/images/smartDGM/domoticz_devices.png" alt="devices" title="Virtual Sensory w zakładce Urządzenia" /></li>
+<li>Ich <strong>numery IDX</strong> musimy wpisać do konfiguracji <strong>Tasmota</strong>. W tym celu wchodzimy do <em>Configuration</em> i <em>Configure Domoticz</em> w menu <strong>Tasmota</strong>.
+<img src="/images/smartDGM/tasmota_domoticz.png" alt="tasmota_domoticz" title="Konfiguracja IDX w Tasmota" /></li>
+<li>Klikamy <em>Save</em> i w okienku podsłuchiwacza <strong>komunikatów MQTT</strong> powinny ukazać się dane od <strong>naszego gniazdka</strong>. Jeśli nie, sprawdź konfigurację <strong>Tasmota</strong> i <strong>Domoticz MQTT</strong>.</li>
+</ol>
+
+<h1 id="bonus">Bonus&nbsp;<a class="anchor" href="#bonus"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="kalibracja-pomiaru-prądu">Kalibracja pomiaru prądu&nbsp;<a class="anchor" href="#kalibracja-pomiaru-prądu"><i class="small linkify icon"></i></a> </h2>
+
+<p>Kiedy odczyty napięcia lub pobieranej mocy są jakby zawyżone/zaniżone należy zrobić <strong>kalibrację</strong>. Możemy do tego wykorzystać miernik poboru mocy (dostępne w sklepach elektro) albo prosty sposób podłączając do naszego gniazdka <strong>zwykłą żarówkę</strong> o znanej mocy (np. 60W, 100W itp.) i w konsoli <strong>Tasmota</strong> wpisać:</p>
+
+<ul>
+<li>PowerSet 60,</li>
+<li>VoltageSet 240,</li>
+<li>CurrentSet 250.</li>
+</ul>
+
+<p>Po tym zabiegu Tasmota powinien pokazać już &ldquo;lepsze&rdquo; wyniki pomiaru. A jeśli <em>Power factor</em> wynosi <strong>1.00</strong> możemy uznać, że kalibracja przeszła prawidłowo.</p>
+
+<blockquote>
+<p><strong>UWAGA!</strong> Wartości <em>Wykorzystanie energii</em> w Domoticz mogą nieznacznie odbiegać od tego, co mamy w module <strong>Tasmota</strong> (Wartości <em>Energy Today/Yesterday</em>). Wygląda na to, że Tasmota okresowo (domyślnie co 5 min) wysyła 2 wartości: <strong>pobór mocy</strong> i <strong>wykorzystaną energię</strong> (<em>Energy Total</em>), a Domoticz, bazując na tych wartościach uśrednia wyniki co każdą godzinę.</p>
+</blockquote>
+
+<h1 id="linki">Linki&nbsp;<a class="anchor" href="#linki"><i class="small linkify icon"></i></a> </h1>
+
+<ul>
+<li><a href="https://github.com/arendst/Sonoff-Tasmota/wiki">wiki projektu Tasmota</a></li>
+<li><a href="https://github.com/arendst/Sonoff-Tasmota/wiki/Flashing">wiki nt. flashowania Tasmota</a></li>
+</ul>
+
+<h1 id="podsumowanie">Podsumowanie&nbsp;<a class="anchor" href="#podsumowanie"><i class="small linkify icon"></i></a> </h1>
+
+<p>Jeśli dotrwałeś do tego miejsca to moje gratulacje! Dalej wszystko powinno być dziecinnie proste. Przed Tobą włączanie, wyłączanie i dokładne monitorowanie poboru energii jakiegokolwiek urządzenia, które podepniesz do Twojego nowego <strong>smart gniazdka</strong> - i to wszystko z poziomu Domoticz&rsquo;a!</p>
+
+<p>Daj znać <strong>w komentarzach</strong>, jeśli wg Ciebie czegoś brakuje w tekście, coś nie działa albo po prostu czy Ci się podoba taka forma poradnika. Ja ze swojej strony dziękuję Ci za poświęcony czas i do następnego poradnika!</p>
+
+<blockquote>
+<p><strong>ACHTUNG!</strong> Powyższa instrukcja służy wyłącznie celom edukacyjnym. Wszystko to robisz na własną odpowiedzialność, a autor nie bierze odpowiedzialności za szkody powstałe w wyniku nierozważnych działań.</p>
+</blockquote>
+
+				</article>				
+			</section>
+
+			
+			<section class="ui secondary attached segment dream-tags">
+				
+					
+
+
+
+
+	
+		<a class="ui label pink " href="/tags/linux" title="linux">linux</a>
+	
+		<a class="ui label brown " href="/tags/raspberry" title="raspberry">raspberry</a>
+	
+		<a class="ui label pink " href="/tags/esp8266" title="esp8266">esp8266</a>
+	
+		<a class="ui label blue " href="/tags/domoticz" title="domoticz">domoticz</a>
+	
+		<a class="ui label brown " href="/tags/tasmota" title="tasmota">tasmota</a>
+	
+
+
+				
+			</section>
+
+			
+			
+				<section class="ui secondary  attached segment share row box">
+					
+
+
+
+
+
+
+
+
+<div class="author">
+	
+	<img class="avatar" src="/images/ja_awatar.png">
+	
+</div>
+<div class="info grow flexbox">
+	
+	<p class="name">majki</p>
+	
+	<p class="desc">Wszystko jest możliwe - niemożliwe potrzebuje tylko więcej czasu.</p>
+</div>
+
+
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Udostępnij</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Gniazdko SmartDGM  https:\/\/majki09.github.io\/posts\/gniazdko_smartdgm\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section>
+
+				</section>
+			
+
+			
+			
+								
+				<section class="ui secondary attached segment copyright">
+					
+
+
+
+
+<div class="row box">
+	<a rel="license" class="license image none flexbox" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+		<img alt="Creative Commons License" src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" style="border-width: 0"></img>
+	</a>
+	<span class="license statement both flexbox">
+		Ten wpis jest na licencji
+		<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+	</span>
+</div>
+				</section>
+			
+
+			
+			
+				<div class="ui secondary bottom attached stacked segment disqus">
+					
+<div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = 'https:\/\/majki09.github.io\/posts\/gniazdko_smartdgm\/';
+		this.page.identifier = '36310a20cb664ba6ed0e2ccac0d2a4ed';
+	};
+	(function() {
+   	var d = document, s = d.createElement('script');
+   	s.src = 'https://' + 'majki-blog' + '.disqus.com/embed.js';
+   	s.setAttribute('data-timestamp', +new Date());
+   	(d.head || d.body).appendChild(s);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+				</div>
+			
+		</div>
+	</div>
+
+				</div>
+				<div class="back">
+					
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="O mnie kilka słów"></i>
+	</div>
+	
+		
+	
+		
+	
+
+	
+	
+	
+	
+	
+	
+	
+		
+		
+			<div class="item">
+				<a href="https://github.com/majki09" target="	_blank">
+					<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+			<div class="item">
+				<a href="https://www.stackoverflow.com/users/8344456/majki" target="	_blank">
+					<i id="ico" class="inverted big link stack overflow icon" title="Stack Overflow"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+</nav>
+
+
+
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments">
+			<div class="ui inverted segment">
+				<article class="twemoji">
+					<h1>Kim jestem?</h1>
+
+<p>Nazywam się Łukasz Majkut.</p>
+
+<p>Lubię elektronikę i większość co związana z komputerami, czyli od programowania, po obróbkę obrazu i wideo.</p>
+
+<p>Ciekawi mnie też <strong>fotografia</strong>, w sumie to od zawsze ciekawiła. Czy jestem <strong>fotografem</strong>? Jeśli fotograf, to osoba, która robi zdjęcia to tak, jestem fotografem 😄. Już niebawem na tym blogu powstaną wpisy na temat właśnie fotografii, będzie coś o podstawach, jak i obróbce zdjęć w <strong>Lightroomie</strong>.</p>
+
+<p>Od czterech lat pracuję jako inżynier <a href="https://en.wikipedia.org/wiki/In-circuit_test">ICT</a> w dużej firmie w Krakowie. Jest to praca polegająca na testowaniu <strong>elektroniki</strong>, ale są też elementy <strong>programowania</strong>. Praca jest bardzo specyficzna, a jedna fikstura do testów może zawierać <strong>5km</strong> kabli i ważyć <strong>45kg!</strong></p>
+
+<p>Zapraszam też do zwiedzenia mojego profilu na <strong>githubie</strong>, poprzez kliknięcie na ikonkę powyżej.</p>
+
+<p><h1>Blog</h1>
+Ten blog powstał ogólnie po to, żeby zebrać w całość niektóre z moich udanych pomysłów w jednym miejscu. Nie raz, żeby zrobić coś ciekawego musiałem przekopywać się przez tonę informacji nie tylko z Internetu. Mam nadzieję, że dzięki moim wpisom Ty już nie będziesz musiała / musiał tego robić  😄.</p>
+
+<p>Blog jest też takim moim portfolio, czymś, czym mogę się spokojnie pochwalić.</p>
+
+<!---
+commented out by majki
+I’m just another teenager who likes **writing**, **programming** and **making stuff**. Even setting the title as **Who Am I**  for this article is reminding me of `whoami` in Linux. I feel the inner urge to contribute something to the Internet because I love writing and I believe posting something online enables users all around the globe to see your work and suggest improvements.
+
+Recently I've also started taking interest in web designing and hosting the fruitful results of which these site and blogs are! I also make **projects** and share them online at **Instructables**, the link of which has been placed on the home page. Making stuff is just one of the things I love the most.
+
+That’s all that I can think of right now. Hopefully I’ll add something more to this later on. 😅
+
+Curious about me? Use the social links above to check out my profiles.
+
+You can also support me on <a href="https://patreon.com/UtkarshVerma" target="_blank">Patreon</a>. I'd really appreciate it.
+-->
+
+				</article>
+			</div>
+		</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+	
+	
+		<script id="dsq-count-scr" src="//majki-blog.disqus.com/count.js" async></script>
+	
+
+		
+
+<script src="/js/site.js"></script>
+
+
+
+	<script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.6"></script>
+
+
+
+
+
+
+
+
+
+		
+
+
+		
+
+	<script>
+		(function () {
+		  console.log("Twemoji up and making stuff colourful!");
+		  for (var b = document.getElementsByClassName("twemoji"), a = 0; a < b.length; a++) {
+			twemoji.parse(b[a]);
+		  }
+		})();
+	</script>
+
+
+	</body>
+</html>
